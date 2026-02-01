@@ -1,3 +1,4 @@
+import Hero from "@/components/hero/Hero";
 
 
 export default function HomePage() {
@@ -20,7 +21,7 @@ export default function HomePage() {
       {/* ==================== */}
       {/*         HERO         */}
       {/* ==================== */}
-      <section></section>
+      <Hero />
 
 
       {/* ==================== */}
