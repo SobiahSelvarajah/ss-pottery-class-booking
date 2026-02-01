@@ -4,6 +4,13 @@ export default function HomePage() {
   return (
 
     <main>
+
+      {/* ==================== */}
+      {/*        NAVBAR        */}
+      {/* ==================== */}
+      <section></section>
+
+
       {/* ==================== */}
       {/*    HEADER / INTRO    */}
       {/* ==================== */}
