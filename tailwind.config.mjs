@@ -13,6 +13,7 @@ export default {
 
   theme: {
     extend: {
+      // custom colors
       colors: {
         clay: {
           brown: "#A2672D",
@@ -27,6 +28,14 @@ export default {
           light: "#D2D2D2",
           white: "#FFFFFF",
         },
+      },
+
+      // fonts
+      // montserrat for headings
+      // helvetica for paragraphs
+      fontFamily: {
+        heading: ["var(--font-montserrat)","sans-serif"],
+        body: ["Helvetica","Arial", "sans-serif"],
       },
     },
   },
