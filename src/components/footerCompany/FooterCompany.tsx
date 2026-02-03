@@ -1,9 +1,10 @@
+import FooterCompanyHeading from "../footerCompanyHeading/FooterCompanyHeading";
 
 
 export default function FooterCompany() {
     return(
         <nav aria-label="Footer navigation - Company links">
-            <h3 className="font-heading text-lg mb-4 underline underline-offset-4">About Kiln & Clay</h3>
+            <FooterCompanyHeading />
             <ul className="space-y-2 font-body text-neutral-light">
                 <li><a href="#" className="hover:text-neutral-white transition">About</a></li>
                 <li><a href="#" className="hover:text-neutral-white transition">Contact</a></li>
