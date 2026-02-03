@@ -1,11 +1,10 @@
+import FooterHeading from "../footerHeading/FooterHeading";
 
 
 export default function FooterContent() {
     return(
         <div className="max-w-7xl mx-auto grid gap-12 md:grid-cols-3">
-            <h2 className="font-heading text-2xl mb-4">
-                Connect with us <br/>for more information.
-            </h2>
+            <FooterHeading />
             <nav aria-label="Footer navigation - Explore links">
                 <h3 className="font-heading text-lg mb-4 underline underline-offset-4">
                     Explore
