@@ -1,4 +1,5 @@
 import Hero from "@/components/hero/Hero";
+import OurStory from "@/components/ourStory/OurStory";
 import Footer from "@/components/footer/Footer";
 
 export default function HomePage() {
@@ -39,7 +40,7 @@ export default function HomePage() {
       {/* ==================== */}
       {/*       OUR STORY      */}
       {/* ==================== */}
-      <section></section>
+      <OurStory />
 
 
       {/* ==================== */}
