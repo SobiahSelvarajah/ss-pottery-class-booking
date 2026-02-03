@@ -1,15 +1,11 @@
 import FooterExploreHeading from "../footerExploreHeading/FooterExploreHeading";
-
+import FooterExploreLinks from "../footerExploreLinks/FooterExploreLinks";
 
 export default function FooterExplore() {
     return(
         <nav aria-label="Footer navigation - Explore links">
             <FooterExploreHeading />
-            <ul className="space-y-2 font-body text-neutral-light">
-                <li><a href="#" className="hover:text-neutral-white transition">Classes</a></li>
-                <li><a href="#" className="hover:text-neutral-white transition">Studios</a></li>
-                <li><a href="#" className="hover:text-neutral-white transition">Workshops</a></li>
-            </ul>
+            <FooterExploreLinks />
         </nav>
     )
 }
