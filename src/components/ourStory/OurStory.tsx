@@ -1,12 +1,11 @@
+import OurStoryHeading from "../ourStoryHeading/OurStoryHeading";
 
 
 export default function OurStory() {
     return(
         <section className="bg-clay-light px-10 py-20 md:px-15 lg:px-25">
             <div className="mx-auto max-w-3xl text-left lg:text-center">
-                <h2 className="mb-6 font-montserrat text-3xl font-semibold text-clay-dark md:text-4xl">
-                    Our Story
-                </h2>
+                <OurStoryHeading />
                 <p className="mb-8 font-helvetica text-base leading-relaxed text-neutral-dark md:text-lg">
                     Kiln & Clay was created to make pottery feel welcoming, not intimidating.
                     <br/>
