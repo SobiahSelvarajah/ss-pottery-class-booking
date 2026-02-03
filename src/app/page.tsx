@@ -1,5 +1,5 @@
 import Hero from "@/components/hero/Hero";
-
+import Footer from "@/components/footer/Footer";
 
 export default function HomePage() {
   return (
@@ -51,7 +51,7 @@ export default function HomePage() {
       {/* ==================== */}
       {/*        FOOTER        */}
       {/* ==================== */}
-      <section></section>
+      <Footer />
 
 
     </main>
