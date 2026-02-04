@@ -1,4 +1,6 @@
 import ExperienceHeading from "../experienceHeading/ExperienceHeading";
+import ExperienceImage from "../experienceImage/ExperienceImage";
+
 
 
 
@@ -7,13 +9,7 @@ export default function Experience() {
         <article className="bg-clay-light px-10 py-20 md:px-15 lg:px-25">
             <ExperienceHeading />
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-                <div className="overflow-hidden rounded-3xl">
-                    <img
-                        src="/images/pottery-wheel.jpg"
-                        alt="Hands shaping clay on a pottery wheel"
-                        className="h-[40vh] md:h-[50vh] lg:h-[65vh] w-full object-cover"
-                    />
-                </div>            
+                <ExperienceImage />         
                 <div className="grid gap-5 lg:gap-10 md:grid-cols-3 lg:grid-cols-1">
                     <section className="rounded-2xl bg-white p-6 shadow-sm">
                         <h3 className="font-heading text-xl mb-2">
