@@ -1,4 +1,5 @@
 import Hero from "@/components/hero/Hero";
+import Featured from "@/components/featured/Featured";
 import Experience from "@/components/experience/Experience";
 import OurStory from "@/components/ourStory/OurStory";
 import Footer from "@/components/footer/Footer";
@@ -16,12 +17,6 @@ export default function HomePage() {
 
 
       {/* ==================== */}
-      {/*    HEADER / INTRO    */}
-      {/* ==================== */}
-      <section></section>
-
-
-      {/* ==================== */}
       {/*         HERO         */}
       {/* ==================== */}
       <Hero />
@@ -30,7 +25,7 @@ export default function HomePage() {
       {/* ==================== */}
       {/*   FEATURED CLASSES   */}
       {/* ==================== */}
-      <section></section>
+      <Featured />
 
 
       {/* ==================== */}
