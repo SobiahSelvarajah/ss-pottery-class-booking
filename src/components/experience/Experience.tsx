@@ -1,13 +1,11 @@
+import ExperienceHeading from "../experienceHeading/ExperienceHeading";
+
 
 
 export default function Experience() {
     return(
         <article className="bg-clay-light px-10 py-20 md:px-15 lg:px-25">
-            <header className="mb-12 text-center">
-                <h2 className="font-heading text-3xl md:text-4xl text-neutral-dark">
-                    Shape Your Experience
-                </h2>
-            </header>
+            <ExperienceHeading />
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
                 <div className="overflow-hidden rounded-3xl">
                     <img
