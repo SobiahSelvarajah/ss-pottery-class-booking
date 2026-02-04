@@ -1,12 +1,10 @@
+import FeaturedIntro from "../featuredIntro/FeaturedIntro";
 
 
 export default function Featured() {
     return (
         <section className="bg-stone-200/70 px-10 py-20 md:px-15 lg:px-25">
-            <header className="mb-12 max-w-2xl">
-                <h2 className="font-heading text-3xl md:text-4xl text-stone-900 mb-4">Featured Classes</h2>
-                <p className="font-body text-stone-700">Hand-picked pottery sessions led by skilled makers across local studios.</p>
-            </header>
+            <FeaturedIntro />
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 <article className="group overflow-hidden rounded-3xl bg-stone-50 shadow-md transition hover:-translate-y-1 hover:shadow-lg">
                     <img
