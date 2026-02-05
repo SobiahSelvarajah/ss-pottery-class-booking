@@ -2,7 +2,7 @@
 
 export default function FeaturedCard2() {
     return(
-        <article className="group overflow-hidden rounded-3xl bg-stone-50 shadow-md transition hover:-translate-y-1 hover:shadow-lg">
+        <article className="group overflow-hidden rounded-3xl bg-stone-50 shadow-md transition hover:-translate-y-3 hover:shadow-lg">
             <img
                 src="/images/plates.jpg"
                 alt="image of plates"
