@@ -1,6 +1,6 @@
 import OurStoryHeading from "../ourStoryHeading/OurStoryHeading";
 import OurStoryDesc from "../ourStoryDesc/OurStoryDesc";
-import LearnMoreButton from "../learnMoreButton/LearnMoreButton";
+import AboutButton from "../aboutButton/AboutButton";
 
 
 export default function OurStoryText() {
@@ -9,7 +9,7 @@ export default function OurStoryText() {
                         text-left lg:text-center">
             <OurStoryHeading />
             <OurStoryDesc />
-            <LearnMoreButton />
+            <AboutButton />
         </div>
     )
 }

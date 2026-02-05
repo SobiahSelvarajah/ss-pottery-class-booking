@@ -1,6 +1,6 @@
 
 
-export default function LearnMoreButton() {
+export default function AboutButton() {
     return(
         <a
             href="/about"
