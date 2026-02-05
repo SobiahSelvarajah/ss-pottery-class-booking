@@ -1,13 +1,12 @@
+import FeaturedCard2Image from "../featuredCard2Image/FeaturedCard2Image";
 
 
 export default function FeaturedCard2() {
     return(
-        <article className="group overflow-hidden rounded-3xl bg-stone-50 shadow-md transition hover:-translate-y-3 hover:shadow-lg">
-            <img
-                src="/images/plates.jpg"
-                alt="image of plates"
-                className="h-56 w-full object-cover"
-            />
+        <article className="group overflow-hidden rounded-3xl 
+                            bg-stone-50 shadow-md transition 
+                            hover:-translate-y-3 hover:shadow-lg">
+            <FeaturedCard2Image />
             <div className="p-7">
                 <h3 className="font-heading text-xl mb-2 text-stone-900">Hand-Building with Clay</h3>
                 <p className="font-body text-stone-600 mb-4">Explore slab, coil, and pinch techniques to create unique forms.</p>
