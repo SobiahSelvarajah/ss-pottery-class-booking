@@ -1,13 +1,12 @@
+import FeaturedCard1Image from "../featuredCard1Image/FeaturedCard1Image";
 
 
 export default function FeaturedCard1() {
     return(
-        <article className="group overflow-hidden rounded-3xl bg-stone-50 shadow-md transition hover:-translate-y-3 hover:shadow-lg">
-            <img
-                src="/images/wheel-throwing.jpg"
-                alt="Shaping clay on wheel"
-                className="h-56 w-full object-cover"
-            />
+        <article className="group overflow-hidden rounded-3xl 
+                            bg-stone-50 shadow-md transition 
+                            hover:-translate-y-3 hover:shadow-lg">
+            <FeaturedCard1Image />
             <div className="p-7">
                 <h3 className="font-heading text-xl mb-2 text-stone-900">Wheel Throwing Basics</h3>
                 <p className="font-body text-stone-600 mb-4">Learn the fundamentals of centering, shaping, and trimming on the wheel.</p>
