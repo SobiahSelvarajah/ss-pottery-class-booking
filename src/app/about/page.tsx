@@ -16,7 +16,10 @@ export default function AboutPage() {
 
             <section>
                 <div>
-                    <img src="" alt="" />
+                    <img 
+                        src="/images/carving-pottery.jpg" 
+                        alt="Hands carving design into pot" 
+                    />
                 </div>
 
                 <div>
