@@ -2,19 +2,12 @@ import Hero from "@/components/hero/Hero";
 import Featured from "@/components/featured/Featured";
 import Experience from "@/components/experience/Experience";
 import OurStory from "@/components/ourStory/OurStory";
-import Footer from "@/components/footer/Footer";
 
 
 export default function HomePage() {
   return (
 
     <main>
-
-      {/* ==================== */}
-      {/*        NAVBAR        */}
-      {/* ==================== */}
-      <section></section>
-
 
       {/* ==================== */}
       {/*         HERO         */}
@@ -44,13 +37,6 @@ export default function HomePage() {
       {/*        GALLERY       */}
       {/* ==================== */}
       <section></section>
-
-
-      {/* ==================== */}
-      {/*        FOOTER        */}
-      {/* ==================== */}
-      <Footer />
-
 
     </main>
   );
