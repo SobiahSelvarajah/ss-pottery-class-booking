@@ -1,18 +1,11 @@
+import AboutIntro from "@/components/aboutIntro/AboutIntro";
+
 
 
 export default function AboutPage() {
     return(
         <main className="bg-clay-light text-neutral-dark">
-            <section className="max-w-4xl mx-auto px-10 py-20 text-center">
-                <header>
-                    <h1 className="text-4xl md:text-5xl font-medium mb-6">
-                        About Kiln & Clay
-                    </h1>
-                    <p className="text-lg md:text-xl text-neutral-mid leading-relaxed">
-                        A place to discover pottery, connect with local studios, and create something meaningful with your hands.
-                    </p>
-                </header>
-            </section>
+            <AboutIntro />
 
             <section className="max-w-6xl mx-auto px-10 py-10 grid md:grid-cols-2 gap-15 items-center">
                 <div className="w-full h-full">
