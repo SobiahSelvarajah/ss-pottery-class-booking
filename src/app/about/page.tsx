@@ -2,87 +2,95 @@
 
 export default function AboutPage() {
     return(
-        <main>
-            <section>
+        <main className="bg-clay-light text-neutral-dark">
+            <section className="max-w-4xl mx-auto px-10 py-20 text-center">
                 <header>
-                    <h1>
+                    <h1 className="text-4xl md:text-5xl font-medium mb-6">
                         About Kiln & Clay
                     </h1>
-                    <p>
+                    <p className="text-lg md:text-xl text-neutral-mid leading-relaxed">
                         A place to discover pottery, connect with local studios, and create something meaningful with your hands.
                     </p>
                 </header>
             </section>
 
-            <section>
-                <div>
+            <section className="max-w-6xl mx-auto px-10 py-10 grid md:grid-cols-2 gap-15 items-center">
+                <div className="w-full h-full">
                     <img 
                         src="/images/carving-pottery.jpg" 
                         alt="Hands carving design into pot" 
+                        className="w-full h-96 object-cover rounded-lg"
                     />
                 </div>
 
                 <div>
-                    <h2>
+                    <h2 className="text-3xl font-medium mb-6">
                         Our Story
                     </h2>
-                    <p>
+                    <p className="mb-4 text-neutral-mid leading-relaxed">
                         Kiln & Clay was created to make pottery more accessible. We bring together independent studios, skilled makers, and curious beginners in one thoughtful space.
                     </p>
-                    <p>
+                    <p className="text-neutral-mid leading-relaxed">
                         Whether you're touching clay for the first time or returning to a long-loved craft, we believe the process matters as much as the finished piece.
                     </p>
                 </div>
             </section>
 
-            <section>
-                <h2>
-                    What we do
-                </h2>
-                <ul>
-                    <li>Curate high-quality pottery classes</li>
-                    <li>Support independent studios and makers</li>
-                    <li>Help people learn through hands-on experiences</li>
-                </ul>
+            <section className="max-w-6xl mx-auto px-10 py-20 grid md:grid-cols-2 gap-12 items-center">
+                <div className="order-2 md:order-1 sm:text-left md:text-right">
+                    <h2 className="text-3xl font-medium mb-6">
+                        What we do
+                    </h2>
+                    <ul className="space-y-4 text-neutral-mid leading-relaxed">
+                        <li>Curate high-quality pottery classes</li>
+                        <li>Support independent studios and makers</li>
+                        <li>Help people learn through hands-on experiences</li>
+                    </ul>
+                </div>
+                <div className="order-1 md:order-2">
+                    <img src="/images/hands-and-clay.jpg" alt="people's hands molding clay" className="w-full h-96 object-cover rounded-lg"/>
+                </div>
             </section>
 
-            <section>
-                <header>
-                    <h2>
-                        Meet the Studios
-                    </h2>
-                    <p>
-                        We partner with independent pottery studios that value craftsmanship, creativity, and community.
-                    </p>
-                </header>
-
-                <div>
-                    <article>
-                        <h3>
-                            Local & Independent
-                        </h3>
-                        <p>
-                            Each studio on Kiln & Clay is independently run and deeply rooted in its local creative community.
+            <section className="bg-clay-sand/30">
+                <div className="max-w-6xl mx-auto px-10 py-20">
+                    <header className="text-center max-w-3xl mx-auto mb-16">
+                        <h2 className="text-center max-w-3xl mx-auto mb-16">
+                            Meet the Studios
+                        </h2>
+                        <p className="text-neutral-mid leading-relaxed">
+                            We partner with independent pottery studios that value craftsmanship, creativity, and community.
                         </p>
-                    </article>
+                    </header>
 
-                    <article>
-                        <h3>
-                            Skilled Makers
-                        </h3>
-                        <p>
-                            Classes are led by experienced ceramicists who love sharing their knowledge and process.
-                        </p>
-                    </article>
+                    <div className="grid md:grid-cols-3 gap-8">
+                        <article className="bg-clay-light p-8 rounded-lg">
+                            <h3 className="text-xl font-medium mb-3">
+                                Local & Independent
+                            </h3>
+                            <p className="text-neutral-mid leading-relaxed">
+                                Each studio on Kiln & Clay is independently run and deeply rooted in its local creative community.
+                            </p>
+                        </article>
 
-                    <article>
-                        <h3>
-                            Welcoming Spaces
-                        </h3>
-                        <p>
-                            From beginners to experienced makers, our studios provide inclusive, supportive environments.
-                        </p>
-                    </article>
+                        <article className="bg-clay-light p-8 rounded-lg">
+                            <h3 className="text-xl font-medium mb-3">
+                                Skilled Makers
+                            </h3>
+                            <p className="text-neutral-mid leading-relaxed">
+                                Classes are led by experienced ceramicists who love sharing their knowledge and process.
+                            </p>
+                        </article>
+
+                        <article className="bg-clay-light p-8 rounded-lg">
+                            <h3 className="text-xl font-medium mb-3">
+                                Welcoming Spaces
+                            </h3>
+                            <p className="text-neutral-mid leading-relaxed">
+                                From beginners to experienced makers, our studios provide inclusive, supportive environments.
+                            </p>
+                        </article>
+                    </div>                    
                 </div>
             </section>
         </main>
