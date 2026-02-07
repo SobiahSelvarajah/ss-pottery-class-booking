@@ -1,5 +1,6 @@
 import AboutIntro from "@/components/aboutIntro/AboutIntro";
-import AboutOurStory from "@/components/aboutOurStory/AboutOurStory";
+import AboutStoryImage from "@/components/aboutStoryImage/AboutStoryImage";
+import AboutStoryText from "@/components/aboutStoryText/AboutStoryText";
 
 
 
@@ -10,14 +11,8 @@ export default function AboutPage() {
             <AboutIntro />
 
             <section className="max-w-6xl mx-auto px-10 py-10 grid md:grid-cols-2 gap-15 items-center">
-                <div className="w-full h-full">
-                    <img 
-                        src="/images/carving-pottery.jpg" 
-                        alt="Hands carving design into pot" 
-                        className="w-full h-96 object-cover rounded-lg"
-                    />
-                </div>
-                <AboutOurStory />
+                <AboutStoryImage />
+                <AboutStoryText />
             </section>
 
             <section className="max-w-6xl mx-auto px-10 py-20 grid md:grid-cols-2 gap-12 items-center">

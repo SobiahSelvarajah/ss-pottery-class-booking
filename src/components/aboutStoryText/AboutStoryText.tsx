@@ -1,6 +1,6 @@
 
 
-export default function AboutOurStory() {
+export default function AboutStoryText() {
     return(
         <div>
             <h2 className="text-3xl font-medium mb-6">
