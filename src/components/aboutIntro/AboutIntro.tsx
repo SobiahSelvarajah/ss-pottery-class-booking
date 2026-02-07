@@ -1,5 +1,5 @@
 import AboutIntroHeading from "../aboutIntroHeading/AboutIntroHeading";
-
+import AboutIntroDesc from "../aboutIntroDesc/AboutIntroDesc";
 
 export default function AboutIntro() {
     return(
@@ -7,15 +7,7 @@ export default function AboutIntro() {
                             py-20 text-center">
             <header>
                 <AboutIntroHeading />
-                <p className="text-lg md:text-xl 
-                              text-neutral-mid 
-                              leading-relaxed">
-                    A place to discover pottery, 
-                    connect with local studios, 
-                    and create something 
-                    meaningful with 
-                    your hands.
-                </p>
+                <AboutIntroDesc />
             </header>
         </section>
     )
