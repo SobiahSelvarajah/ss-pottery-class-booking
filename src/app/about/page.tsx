@@ -1,7 +1,5 @@
 import AboutIntro from "@/components/aboutIntro/AboutIntro";
-import AboutStoryImage from "@/components/aboutStoryImage/AboutStoryImage";
-import AboutStoryText from "@/components/aboutStoryText/AboutStoryText";
-
+import AboutStory from "@/components/aboutStory/AboutStory";
 
 
 
@@ -9,11 +7,7 @@ export default function AboutPage() {
     return(
         <main className="bg-clay-light text-neutral-dark">
             <AboutIntro />
-
-            <section className="max-w-6xl mx-auto px-10 py-10 grid md:grid-cols-2 gap-15 items-center">
-                <AboutStoryImage />
-                <AboutStoryText />
-            </section>
+            <AboutStory />
 
             <section className="max-w-6xl mx-auto px-10 py-20 grid md:grid-cols-2 gap-12 items-center">
                 <div className="order-2 md:order-1 sm:text-left md:text-right">
