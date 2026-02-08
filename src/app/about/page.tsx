@@ -1,7 +1,7 @@
 import AboutIntro from "@/components/aboutIntro/AboutIntro";
 import AboutStory from "@/components/aboutStory/AboutStory";
 import AboutWhatWeDo from "@/components/aboutWhatWeDo/AboutWhatWeDo";
-import AboutMeetStudio from "@/components/aboutMeetStudio/AboutMeetStudio";
+import AboutStudio from "@/components/aboutStudio/AboutStudio";
 
 
 export default function AboutPage() {
@@ -10,7 +10,7 @@ export default function AboutPage() {
             <AboutIntro />
             <AboutStory />
             <AboutWhatWeDo />
-            <AboutMeetStudio />
+            <AboutStudio />
         </main>
     )
 }
