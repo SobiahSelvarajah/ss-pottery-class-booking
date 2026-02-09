@@ -1,15 +1,11 @@
+import StudiosIntro from "@/components/studiosIntro/StudiosIntro";
+
 
 
 export default function StudiosPage() {
     return(
         <main className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-20 py-15 bg-clay-light text-neutral-dark">
-            {/* intro */}
-            <section className="mb-15">
-                <header className="max-w-2xl">
-                    <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-clay-dark">Studios</h1>
-                    <p className="mt-5 text-neutral-mid">Discover independent pottery studios offering thoughtfully led classes and workshops</p>
-                </header>
-            </section>
+            <StudiosIntro />
 
             {/* location filter */}
             <section className="mb-11">
