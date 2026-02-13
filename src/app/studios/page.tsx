@@ -1,8 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useState } from "react";
 import StudiosIntro from "@/components/studiosIntro/StudiosIntro";
 import { studiosData } from "@/data/studiosData";
+import StudioCarousel from "@/components/studioCarousel/StudioCarousel";
 
 
 export default function StudiosPage() {
@@ -38,12 +39,12 @@ export default function StudiosPage() {
                     {filteredStudios.map((eachStudio) => (
                         <li key={eachStudio.id}>
                             <article className="flex flex-col h-full rounded-2xl border border-neutral-light bg-neutral-white overflow-hidden transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1">
+                                
                                 {/* img carousel gallery */}
-                                <div className="relative aspect-4/3 bg-clay-sand overflow-hidden">
-                                    <button aria-label="Previous img" className="absolute left-3 top-1/2 -translate-y-1/2 z-10 rounded-full bg-neutral-white/80 px-2 py-1 text-sm shadow opacity-0 group-hover:opacity-100 transition-opacity">←</button>
-                                    <img src={eachStudio.images[0]} alt={eachStudio.alt} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"/>
-                                    <button aria-label="Next img" className="absolute right-3 top-1/2 -translate-y-1/2 z-10 rounded-full bg-neutral-white/80 px-2 py-1 text-sm shadow opacity-0 group-hover:opacity-100 transition-opacity">→</button>
-                                </div>
+                                <StudioCarousel
+                                    images={eachStudio.images}
+                                    alt={eachStudio.alt}
+                                />
 
                                 {/* text */}
                                 <header className="px-5 pt-5">
@@ -65,3 +66,11 @@ export default function StudiosPage() {
         </main>
     )
 }
+
+
+
+// tasks to be handled:
+{/* 
+    - Create image carousel
+    - Link to bookings page
+*/}
