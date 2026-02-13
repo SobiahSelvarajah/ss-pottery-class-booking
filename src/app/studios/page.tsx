@@ -4,6 +4,7 @@ import { useState } from "react";
 import StudiosIntro from "@/components/studiosIntro/StudiosIntro";
 import { studiosData } from "@/data/studiosData";
 import StudioCarousel from "@/components/studioCarousel/StudioCarousel";
+import StudioLocationFilter from "@/components/studioLocationFilter/StudioLocationFilter";
 
 
 export default function StudiosPage() {
@@ -11,26 +12,23 @@ export default function StudiosPage() {
     const [selectedLocation, setSelectedLocation] = useState("all");
 
     const filteredStudios = 
-        selectedLocation === "all" ? studiosData : studiosData.filter((eachStudio) => eachStudio.location.toLowerCase() === selectedLocation);
+        selectedLocation === "all" 
+        ? studiosData 
+        : studiosData.filter((eachStudio) => eachStudio.location.toLowerCase() === selectedLocation);
 
 
     return(
-        <main className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-20 py-15 bg-clay-light text-neutral-dark">
+        <main className="max-w-7xl mx-auto px-5 
+                         sm:px-6 lg:px-20 py-15 
+                         bg-clay-light 
+                         text-neutral-dark">
             <StudiosIntro />
 
             {/* location filter */}
-            <section className="px-4 py-6">
-                <div className="max-w-6xl mx-auto">
-                    <label htmlFor="location" className="block text-sm font-medium text-neutral-dark mb-2">Filter by location:</label> 
-                    <select id="location" value={selectedLocation} onChange={(e) => setSelectedLocation(e.target.value)} className="w-full md:w-64 border border-neutral-light rounded-md px-3 py-2 bg-neutral-white text-neutral-dark focus:outline-none focus:ring-2 focus:ring-clay-brown transition">
-                        <option value="all">All locations</option>
-                        <option value="hackney">Hackney</option>
-                        <option value="greenwich">Greenwich</option>
-                        <option value="islington">Islington</option>
-                        <option value="peckham">Peckham</option>                    
-                    </select>                      
-                </div>
-            </section>
+            <StudioLocationFilter 
+                selectedLocation={selectedLocation}
+                onChange={setSelectedLocation}
+            />
 
             {/* studios list */}
             <section>
@@ -71,6 +69,5 @@ export default function StudiosPage() {
 
 // tasks to be handled:
 {/* 
-    - Create image carousel
     - Link to bookings page
 */}
