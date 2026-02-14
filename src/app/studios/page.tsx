@@ -4,8 +4,7 @@ import { useState } from "react";
 import { studiosData } from "@/data/studiosData";
 import StudiosIntro from "@/components/studiosIntro/StudiosIntro";
 import StudioLocationFilter from "@/components/studioLocationFilter/StudioLocationFilter";
-import StudioCarousel from "@/components/studioCarousel/StudioCarousel";
-import StudioCardText from "@/components/studioCardText/StudioCardText";
+import StudioCard from "@/components/studioCard/StudioCard";
 
 
 export default function StudiosPage() {
@@ -15,7 +14,8 @@ export default function StudiosPage() {
     const filteredStudios = 
         selectedLocation === "all" 
         ? studiosData 
-        : studiosData.filter((eachStudio) => eachStudio.location.toLowerCase() === selectedLocation);
+        : studiosData.filter((eachStudio) => 
+            eachStudio.location.toLowerCase() === selectedLocation);
 
 
     return(
@@ -38,32 +38,7 @@ export default function StudiosPage() {
                     {/* studio card */}
                     {filteredStudios.map((eachStudio) => (
                         <li key={eachStudio.id}>
-                            <article className="flex flex-col h-full rounded-2xl 
-                                                border border-neutral-light 
-                                                bg-neutral-white overflow-hidden 
-                                                transition-all duration-300 ease-out 
-                                                hover:shadow-xl hover:-translate-y-1">
-                                
-                                {/* img carousel gallery */}
-                                <StudioCarousel
-                                    images={eachStudio.images}
-                                    alt={eachStudio.alt}
-                                />
-
-                                {/* text */}
-                                <StudioCardText
-                                    name={eachStudio.name}
-                                    area={eachStudio.area}
-                                    city={eachStudio.city}
-                                    description={eachStudio.description}
-                                />
-                                
-                                {/* direct to booking */}
-                                {/* link to booking page once set up */}
-                                <div className="mt-auto px-5 pb-5">
-                                    <span className="inline-block text-sm font-medium text-clay-brown transition-colors group-hover:text-clay-dark">Book studio →</span>
-                                </div>
-                            </article>
+                            <StudioCard eachStudio={eachStudio}/>
                         </li>
                     ))}
                 </ul>
