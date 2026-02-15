@@ -5,12 +5,12 @@ import AboutStudio from "@/components/aboutStudio/AboutStudio";
 
 
 export default function AboutPage() {
-    return(
+    return (
         <main className="bg-clay-light text-neutral-dark">
             <AboutIntro />
             <AboutStory />
             <AboutPurpose />
             <AboutStudio />
         </main>
-    )
-}
+    );
+};

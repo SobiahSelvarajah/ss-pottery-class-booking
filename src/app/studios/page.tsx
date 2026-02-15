@@ -18,7 +18,7 @@ export default function StudiosPage() {
             eachStudio.location.toLowerCase() === selectedLocation);
 
 
-    return(
+    return (
         <main className="max-w-7xl mx-auto px-5 
                          sm:px-6 lg:px-20 py-15 
                          bg-clay-light 
@@ -44,8 +44,8 @@ export default function StudiosPage() {
                 </ul>
             </section>
         </main>
-    )
-}
+    );
+};
 
 
 
