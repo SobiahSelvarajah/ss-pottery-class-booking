@@ -1,28 +1,19 @@
+import ContactIntro from "@/components/contactIntro/ContactIntro";
 
 
 export default function ContactPage() {
-    
+
     return (
         <main className="min-h-screen bg-clay-light text-neutral-dark px-6 py-16">
             <div className="max-w-6xl mx-auto">
 
-                {/* contact intro */}
-                <section className="text-center mb-16">
-                    <h1 className="text-3xl sm:text-4xl font-medium text-clay-dark">
-                        Get in Touch
-                    </h1>
-                    <p className="mt-4 max-w-2xl mx-auto text-neutral-mid">
-                        Have a question about our studios, classes or bookings?
-                        We'd love to hear from you!
-                    </p>
-                </section>
+                <ContactIntro />
 
                 {/* contact content */}
                 <section className="grid grid-cols-1 lg:grid-cols-2 gap-14">
 
                     {/* contact info */}
                     <div className="space-y-8">
-
                         <div>
                             <h2 className="text-xl font-medium text-clay-dark">
                                 Contact Information
@@ -89,4 +80,3 @@ export default function ContactPage() {
         </main>
     )
 }
-
