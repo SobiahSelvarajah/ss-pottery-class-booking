@@ -1,34 +1,18 @@
 import ContactIntro from "@/components/contactIntro/ContactIntro";
+import ContactInfo from "@/components/contactInfo/ContactInfo";
 
 
 export default function ContactPage() {
-
     return (
-        <main className="min-h-screen bg-clay-light text-neutral-dark px-6 py-16">
+        <main className="min-h-screen bg-clay-light 
+                         text-neutral-dark 
+                         px-6 py-16">
             <div className="max-w-6xl mx-auto">
-
                 <ContactIntro />
 
                 {/* contact content */}
                 <section className="grid grid-cols-1 lg:grid-cols-2 gap-14">
-
-                    {/* contact info */}
-                    <div className="space-y-8">
-                        <div>
-                            <h2 className="text-xl font-medium text-clay-dark">
-                                Contact Information
-                            </h2>
-                            <p className="mt-2 text-neutral-mid">
-                                Reach out directly or visit one of our studio locations.
-                            </p>
-                        </div>
-
-                        <div className="space-y-4 text-sm">
-                            <p>Email: hello@claystudios.com</p>
-                            <p>Phone: +44 20 1234 5678</p>
-                            <p>Opening Hours: Monday - Saturday, 9am - 7pm</p>
-                        </div>
-                    </div>
+                    <ContactInfo />
 
                     {/* contact form */}
                     <div className="bg-neutral-white border border-neutral-light rounded-2xl shadow-sm p-8">
