@@ -1,4 +1,8 @@
 import { NextResponse } from "next/server";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+
 
 export async function POST(request: Request) {
     try {
@@ -23,17 +27,25 @@ export async function POST(request: Request) {
             );
         }
 
-        // temporary logging data to terminal
-        console.log("New contact details:", body);
+        // sending and saving data into db
+        const newContactData = await prisma.contact.create({
+            data: {
+                name,
+                email,
+                subject,
+                message,
+            },
+        });
 
         // success response
         return NextResponse.json(
-            { message: "Message created successfully"},
+            { message: "Message created successfully", contact: newContactData },
             { status: 201 }
         );
 
     // Server error catch
     } catch(error) {
+        console.error("POST /api/contact error:", error);
         return NextResponse.json(
             { error: "Sorry, an internal server error has occurred" },
             { status: 500 }
