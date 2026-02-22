@@ -17,11 +17,11 @@ export default function NavbarLinks() {
             </li>
             <li>
                 <a 
-                    href="/classes" 
+                    href="/bookings" 
                     className="hover:underline 
                                hover:text-clay-sand 
                                transition-colors">
-                    Classes
+                    Bookings
                 </a>
             </li>
             <li>
