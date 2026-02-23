@@ -1,12 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 
 export default function NavbarMobile() {
 
+    // navbar initial state
     const [navbarOpen, setNavbarOpen] = useState(false);
+
+    // body scroll lock
+    useEffect(() => {
+        if (navbarOpen) {
+            document.body.style.overflow = "hidden"; 
+        } else {
+            document.body.style.overflow = "";
+        }
+
+        // in case component unmounts whilst open
+        return () => {
+            document.body.style.overflow = "";
+        }
+    }, [navbarOpen]);
 
     return(
         <div className="md:hidden px-2">
@@ -22,7 +37,7 @@ export default function NavbarMobile() {
                 {/* first line */}
                 <span
                     className={`block h-0.5 w-6 bg-neutral-white 
-                                transform transition-all 
+                                origin-center transform transition-all 
                                 duration-300 ease-in-out 
                                 ${navbarOpen ? "rotate-45 translate-y-2" : ""}
                     `}
