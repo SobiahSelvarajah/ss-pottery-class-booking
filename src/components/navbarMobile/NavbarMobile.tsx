@@ -15,84 +15,86 @@ export default function NavbarMobile() {
             <button 
                 aria-label={navbarOpen ? "Close navbar" : "Open navbar"} 
                 onClick={() => setNavbarOpen(!navbarOpen)}
-                className="p-2 rounded-md focus:outline-none 
-                           focus:ring-2 focus:ring-clay-brown"
+                className="relative w-8 h-8 flex flex-col 
+                           justify-center items-center 
+                           gap-1.5 focus:outline-none"
             >
-                <svg
-                    className="w-6 h-6 text-neutral-white"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    {navbarOpen ? (
-                        // icon when navbar open
-                        <path 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            d="M6 18L18 6M6 6l12 12"
-                        />                        
-                    ) : (
-                        // icon when navbar closed
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M4 8h16M4 16h16"
-                        />
-                    )}
-                </svg>
+                {/* first line */}
+                <span
+                    className={`block h-0.5 w-6 bg-neutral-white 
+                                transform transition-all 
+                                duration-300 ease-in-out 
+                                ${navbarOpen ? "rotate-45 translate-y-2" : ""}
+                    `}
+                />
+
+                {/* second line */}
+                <span
+                    className={`block h-0.5 w-6 bg-neutral-white 
+                                transition-all duration-300 
+                                ease-in-out 
+                                ${navbarOpen ? "opacity-0" : "opacity-100"}
+                    `}
+                />
+
+                {/* third line */}
+                <span
+                    className={`block h-0.5 w-6 bg-neutral-white 
+                                transform transition-all 
+                                duration-300 ease-in-out 
+                                ${navbarOpen ? "-rotate-45 -translate-y-2" : ""}
+                    `}
+                />
             </button>
 
-            {/* dropdown menu */}
-            {navbarOpen && (
-                <div className="absolute top-full left-0 w-full 
-                                bg-clay-dark text-neutral-white 
-                                rounded-b-lg mt-2 shadow-lg z-50">
-                    <ul className="flex flex-col">
-                        <li className="border-b border-neutral-light">
-                            <Link 
-                                href="/" 
-                                className="block px-4 py-3 transition 
-                                           hover:bg-clay-brown">
-                                Home
-                            </Link>
-                        </li>
-                        <li className="border-b border-neutral-light">
-                            <Link 
-                                href="/about" 
-                                className="block px-4 py-3 transition 
-                                           hover:bg-clay-brown">
-                                About
-                            </Link>
-                        </li>
-                        <li className="border-b border-neutral-light">
-                            <Link 
-                                href="/bookings" 
-                                className="block px-4 py-3 transition 
-                                           hover:bg-clay-brown">
-                                Bookings
-                            </Link>
-                        </li>
-                        <li className="border-b border-neutral-light">
-                            <Link 
-                                href="/studios" 
-                                className="block px-4 py-3 transition 
-                                           hover:bg-clay-brown">
-                                Studios
-                            </Link>
-                        </li>
-                        <li>
-                            <Link 
-                                href="/contact" 
-                                className="block px-4 py-3 transition 
-                                           hover:bg-clay-brown">
-                                Contact
-                            </Link>
-                        </li>
-                    </ul>
+            {/* overlay */}
+            <div
+                onClick={() => setNavbarOpen(false)}
+                className={`fixed inset-0 bg-black/40 backdrop-blur-sm 
+                            transition-opacity duration-300 z-40 
+                            ${navbarOpen ? "opacity-100 visible" : "opacity-0 invisible"}
+                `}
+            />
+
+            {/* slide effect */}
+            <div
+                className={`fixed top-0 right-0 h-full w-64 
+                            bg-clay-dark text-neutral-white 
+                            shadow-xl transform transition-transform 
+                            duration-300 ease-in-out z-50 
+                            ${navbarOpen ? "translate-x-0" : "translate-x-full"}
+                `}
+            >
+                <div className="flex flex-col h-full p-6">
+                    <nav className="flex flex-col gap-12 text-lg mt-30">
+                        <Link 
+                            href="/" 
+                            onClick={() => setNavbarOpen(false)}
+                        >Home
+                        </Link>
+                        <Link 
+                            href="/about" 
+                            onClick={() => setNavbarOpen(false)}
+                        >About
+                        </Link>
+                        <Link 
+                            href="/bookings" 
+                            onClick={() => setNavbarOpen(false)}
+                        >Bookings
+                        </Link>
+                        <Link 
+                            href="/studios" 
+                            onClick={() => setNavbarOpen(false)}
+                        >Studios
+                        </Link>
+                        <Link 
+                            href="contact" 
+                            onClick={() => setNavbarOpen(false)}
+                        >Contact
+                        </Link>
+                    </nav>
                 </div>
-            )}
+            </div>
         </div>
     )
 }
