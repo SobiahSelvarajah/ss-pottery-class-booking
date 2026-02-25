@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { ContactSchema } from "@/lib/validators/contact";
+import { sendContactConfirmation } from "@/lib/email";
 
 export async function POST(request: Request) {
 
@@ -43,6 +44,14 @@ export async function POST(request: Request) {
         const contact = await prisma.contact.create({
             data: parsed.data
         });
+
+
+        // send confirmation email
+        try {
+            await sendContactConfirmation(contact.name, contact.email) 
+        } catch(emailError) {
+            console.error("Email send failure", emailError)
+        };
 
 
         // return success response
