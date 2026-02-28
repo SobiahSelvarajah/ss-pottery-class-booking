@@ -10,6 +10,25 @@ datasource db {
 }
 
 
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+
+model Booking {
+  id          String          @id @default(uuid())
+  name        String
+  email       String
+  date        DateTime
+  guests      Int
+  message     String?
+  status      BookingStatus   @default(PENDING)
+  createdAt   DateTime        @default(now())    
+} 
+
+
 model Contact {
   id          String      @id @default(uuid())
   name        String
