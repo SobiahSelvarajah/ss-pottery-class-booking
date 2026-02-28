@@ -17,14 +17,42 @@ enum BookingStatus {
 }
 
 
+enum TimeSlot {
+  MORNING
+  AFTERNOON
+  EVENING
+}
+
+
+model Studio {
+  id          String          @id @default(uuid())
+  name        String
+  address     String
+  sessions    Session[]
+}
+
+
+model Session {
+  id          String          @id @default(uuid())
+  date        DateTime
+  timeSlot    TimeSlot
+  studio      Studio          @relation(fields: [studioId], references: [id])
+  studioId    String
+  bookings    Booking[]
+}
+
+
 model Booking {
   id          String          @id @default(uuid())
   name        String
   email       String
-  date        DateTime
   guests      Int
   message     String?
   status      BookingStatus   @default(PENDING)
+
+  session     Session         @relation(fields: [sessionId], references: [id])
+  sessionId   String
+
   createdAt   DateTime        @default(now())    
 } 
 
