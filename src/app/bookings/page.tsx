@@ -1,3 +1,4 @@
+import BookingsIntro from "@/components/bookingsIntro/BookingsIntro";
 
 export default function BookingsPage() {
     return (
@@ -8,18 +9,7 @@ export default function BookingsPage() {
                             lg:grid-cols-2">
                 {/* bookings text container */}
                 <div>
-                    {/* booking intro */}
-                    <header className="mb-10">
-                        <h1 className="text-4xl font-semibold 
-                                       tracking-tight text-stone-900">
-                            Book a Pottery Class
-                        </h1>
-                        <p className="mt-4 text-lg 
-                                    text-stone-600">
-                            Reserve your space for 
-                            an upcoming session.
-                        </p>
-                    </header>  
+                    <BookingsIntro />
                     {/* booking form */}
                     <form className="space-y-6 rounded-2xl bg-white 
                                      p-8 shadow-sm ring-1 ring-stone-200">

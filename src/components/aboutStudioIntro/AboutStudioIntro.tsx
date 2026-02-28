@@ -1,7 +1,7 @@
 
 
 export default function AboutStudioIntro() {
-    return(
+    return (
         <header className="text-center max-w-3xl 
                            mx-auto mb-16">
             <h2 className="text-center max-w-3xl 
