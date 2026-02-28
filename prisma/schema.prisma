@@ -25,43 +25,50 @@ enum TimeSlot {
 
 
 model Studio {
-  id          String          @id @default(uuid())
-  name        String
-  address     String
-  sessions    Session[]
+  id            String          @id @default(uuid())
+  name          String
+  slug          String          @unique
+  location      String
+  area          String
+  city          String
+  description   String
+  images        String[]
+  alt           String
+
+  sessions      Session[]
 }
 
 
 model Session {
-  id          String          @id @default(uuid())
-  date        DateTime
-  timeSlot    TimeSlot
-  studio      Studio          @relation(fields: [studioId], references: [id])
-  studioId    String
-  bookings    Booking[]
+  id            String          @id @default(uuid())
+  date          DateTime
+  timeSlot      TimeSlot
+  studio        Studio          @relation(fields: [studioId], references: [id])
+  studioId      String
+  bookings      Booking[]
 }
 
 
 model Booking {
-  id          String          @id @default(uuid())
-  name        String
-  email       String
-  guests      Int
-  message     String?
-  status      BookingStatus   @default(PENDING)
+  id            String          @id @default(uuid())
+  name          String
+  email         String
+  guests        Int
+  message       String?
+  status        BookingStatus   @default(PENDING)
 
-  session     Session         @relation(fields: [sessionId], references: [id])
-  sessionId   String
+  session       Session         @relation(fields: [sessionId], references: [id])
+  sessionId     String
 
-  createdAt   DateTime        @default(now())    
+  createdAt     DateTime        @default(now())    
 } 
 
 
 model Contact {
-  id          String      @id @default(uuid())
-  name        String
-  email       String
-  subject     String?
-  message     String
-  createdAt   DateTime     @default(now())      
+  id            String      @id @default(uuid())
+  name          String
+  email         String
+  subject       String?
+  message       String
+  createdAt     DateTime     @default(now())      
 }
