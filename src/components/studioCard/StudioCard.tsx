@@ -1,18 +1,8 @@
 "use client";
 
+import type { Studio } from "@prisma/client";
 import StudioCarousel from "../studioCarousel/StudioCarousel";
 import StudioCardText from "../studioCardText/StudioCardText";
-
-type Studio = {
-    id: number;
-    name: string;
-    location: string;
-    area: string;
-    city: string;
-    description: string;
-    images: string[];
-    alt: string;
-};
 
 type StudioCardProps = {
     eachStudio: Studio;
@@ -41,7 +31,11 @@ export default function StudioCard({eachStudio}: StudioCardProps) {
             {/* direct to booking */}                    
             {/* link to booking page once set up */}
             <div className="mt-auto px-5 pb-5">
-                <span className="inline-block text-sm font-medium text-clay-brown transition-colors group-hover:text-clay-dark">Book studio →</span>
+                <span className="inline-block text-sm font-medium 
+                                 text-clay-brown transition-colors 
+                                 group-hover:text-clay-dark">
+                    Book studio →
+                </span>
             </div>
         </article>
     )

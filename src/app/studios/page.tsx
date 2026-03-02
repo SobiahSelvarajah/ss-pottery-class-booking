@@ -1,22 +1,16 @@
-"use client"
-
-import { useState } from "react";
-import { studiosData } from "@/data/studiosData";
+import { prisma } from "@/lib/prisma";
 import StudiosIntro from "@/components/studiosIntro/StudiosIntro";
-import StudioLocationFilter from "@/components/studioLocationFilter/StudioLocationFilter";
-import StudioCard from "@/components/studioCard/StudioCard";
+import StudiosClient from "@/components/studiosClient/StudiosClient";
 
 
-export default function StudiosPage() {
+// Prisma runs on server component
+// server components can't run useState
+// solution - keep data fetching in server component
+//          - move filtering logic to a small client component
 
-    const [selectedLocation, setSelectedLocation] = useState("all");
+export default async function StudiosPage() {
 
-    const filteredStudios = 
-        selectedLocation === "all" 
-        ? studiosData 
-        : studiosData.filter((eachStudio) => 
-            eachStudio.location.toLowerCase() === selectedLocation);
-
+    const studios = await prisma.studio.findMany() 
 
     return (
         <main className="max-w-7xl mx-auto px-5 
@@ -24,32 +18,7 @@ export default function StudiosPage() {
                          bg-clay-light 
                          text-neutral-dark">
             <StudiosIntro />
-
-            {/* location filter */}
-            <StudioLocationFilter 
-                selectedLocation={selectedLocation}
-                onChange={setSelectedLocation}
-            />
-
-            {/* studios list */}
-            <section>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 
-                               lg:grid-cols-3 gap-8">
-                    {/* studio card */}
-                    {filteredStudios.map((eachStudio) => (
-                        <li key={eachStudio.id}>
-                            <StudioCard eachStudio={eachStudio}/>
-                        </li>
-                    ))}
-                </ul>
-            </section>
+            <StudiosClient studios={studios} />
         </main>
     );
 };
-
-
-
-// tasks to be handled:
-{/* 
-    - Link to bookings page
-*/}
