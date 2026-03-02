@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { Studio } from "@prisma/client";
 import StudioCarousel from "../studioCarousel/StudioCarousel";
 import StudioCardText from "../studioCardText/StudioCardText";
@@ -31,10 +32,18 @@ export default function StudioCard({eachStudio}: StudioCardProps) {
             {/* direct to booking */}                    
             {/* link to booking page once set up */}
             <div className="mt-auto px-5 pb-5">
+                <Link
+                    href={`/studios/${eachStudio.slug}`}
+                    className="inline-block text-sm font-medium 
+                               text-clay-brown hover:text-clay-dark 
+                               transition-colors"
+                >
+                    Book studio →
+                </Link>
                 <span className="inline-block text-sm font-medium 
                                  text-clay-brown transition-colors 
                                  group-hover:text-clay-dark">
-                    Book studio →
+                   
                 </span>
             </div>
         </article>
