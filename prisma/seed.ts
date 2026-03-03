@@ -6,6 +6,7 @@ const prisma = new PrismaClient();
 // seeds data
 // runs once and exits
 async function main() {
+
     // studio array
     const studios = [
         {
@@ -89,7 +90,46 @@ async function main() {
         })
     }
     console.log("🌱 Studios seeded");
-}
+
+
+
+    // fetches every row (studio) in studio table
+    // returns them as an array
+    const allStudios = await prisma.studio.findMany();
+
+    // for each studio in the array
+    for (const studio of allStudios) {
+
+        // insert multiple rows into sessions table
+        await prisma.session.createMany({
+
+            // sessions array
+            data: [
+                {
+                    studioId: studio.id,
+                    date: new Date("2026-03-10"),
+                    timeSlot: "MORNING",
+                },
+                {
+                    studioId: studio.id,
+                    date: new Date("2026-03-10"),
+                    timeSlot: "AFTERNOON",
+                },
+                {
+                    studioId: studio.id,
+                    date: new Date("2026-03-11"),
+                    timeSlot: "EVENING",
+                },
+            ],
+            // can run it multiple times without duplicate creation
+            skipDuplicates: true,
+        });
+    };
+    console.log("📅 Sessions seeded");
+};
+
+
+
 
 // run function
 main() 
