@@ -129,8 +129,6 @@ async function main() {
 };
 
 
-
-
 // run function
 main() 
     // if anything fails, log the error

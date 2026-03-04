@@ -1,11 +1,12 @@
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
+import StudioBookingClient from "./StudioBookingClient";
 // when studio booking is created, import here
 
 
 // defining parameters
 type PageProps = {
-    params: { slug: string };
+    params: Promise<{ slug: string }>;
 };
 
 // async to allow db calls
@@ -14,9 +15,11 @@ type PageProps = {
 // so if /studios/clay-room is visited
 // then params.slug === "clay-room"
 export default async function StudioPage({ params }: PageProps) {
+
+    const { slug } = await params;
     // fetch studio from db
     const studio = await prisma.studio.findUnique({
-        where: { slug: params.slug },
+        where: { slug },
         // fetch its related sessions
         include: {
             sessions: {
@@ -33,4 +36,5 @@ export default async function StudioPage({ params }: PageProps) {
     // return studio booking client component here
     // returning client component
     // Server component data fetching + client component UI
+    return <StudioBookingClient studio={studio}/>
 };
