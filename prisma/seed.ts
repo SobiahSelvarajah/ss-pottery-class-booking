@@ -93,37 +93,56 @@ async function main() {
 
 
 
-    // fetches every row (studio) in studio table
-    // returns them as an array
+    // fetch all studios from db 
+    // return in array
     const allStudios = await prisma.studio.findMany();
+
+    // today
+    const today = new Date();
+
+    // helper function to add days
+    function addDays(date: Date, days: number) {
+        const result = new Date(date);
+        result.setDate(result.getDate() + days);
+        return result;
+    };
 
     // for each studio in the array
     for (const studio of allStudios) {
 
-        // insert multiple rows into sessions table
-        await prisma.session.createMany({
+        // generate next 30 days
+        for (let i = 1; i <= 30; i++) {
 
-            // sessions array
-            data: [
-                {
-                    studioId: studio.id,
-                    date: new Date("2026-03-10"),
-                    timeSlot: "MORNING",
-                },
-                {
-                    studioId: studio.id,
-                    date: new Date("2026-03-10"),
-                    timeSlot: "AFTERNOON",
-                },
-                {
-                    studioId: studio.id,
-                    date: new Date("2026-03-11"),
-                    timeSlot: "EVENING",
-                },
-            ],
-            // can run it multiple times without duplicate creation
-            skipDuplicates: true,
-        });
+            const date = addDays(today,i);
+
+            // skip mondays (0=sunday 1=monday)
+            if (date.getDay() === 1) continue;
+
+            // insert multiple rows into sessions table
+            await prisma.session.createMany({
+
+                // sessions array
+                data: [
+                    {
+                        studioId: studio.id,
+                        date,
+                        timeSlot: "MORNING",
+                    },
+                    {
+                        studioId: studio.id,
+                        date,
+                        timeSlot: "AFTERNOON",
+                    },
+                    {
+                        studioId: studio.id,
+                        date,
+                        timeSlot: "EVENING",
+                    },
+                ],
+                // can run it multiple times without duplicate creation
+                skipDuplicates: true,
+            });
+        };
     };
     console.log("📅 Sessions seeded");
 };
