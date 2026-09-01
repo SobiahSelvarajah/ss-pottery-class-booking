@@ -1,3 +1,5 @@
+"use client";
+
 import BookingsIntro from "@/components/bookingsIntro/BookingsIntro";
 import BookingsImg from "@/components/bookingsImg/BookingsImg";
 
@@ -13,7 +15,12 @@ export default function BookingsPage() {
                 <div>
                     <BookingsIntro />
                     {/* booking form */}
-                    <form className="space-y-6 rounded-2xl bg-white 
+                    <div className="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-stone-200">
+                        <p className="text-stone-600">
+                            Booking system coming soon.
+                        </p>
+                    </div>
+                    {/* <form className="space-y-6 rounded-2xl bg-white 
                                      p-8 shadow-sm ring-1 ring-stone-200">
                         <div className="flex flex-col gap-2">
                             <label
@@ -113,7 +120,7 @@ export default function BookingsPage() {
                             type="submit">
                             Book now
                         </button>
-                    </form>                    
+                    </form>                     */}
                 </div>
                 <BookingsImg />
             </div>
