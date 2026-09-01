@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { Studio, Session } from "@prisma/client";
+import BookingForm from "@/components/bookingForm/BookingForm";
 
 type StudioWithSessions = Studio & {
     sessions: Session[];
@@ -39,11 +40,7 @@ export default function StudioBookingClient({ studio }: Props) {
             </div>
 
             {selectedSession && (
-                <div className="p-4 border rounded-lg">
-                    <p className="mb-4 font-medium">
-                        Booking form
-                    </p>
-                </div>
+                <BookingForm sessionId={selectedSession} />
             )}
         </div>
     )
