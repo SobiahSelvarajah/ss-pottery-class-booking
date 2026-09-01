@@ -17,15 +17,6 @@ export default function NavbarLinks() {
             </li>
             <li>
                 <a 
-                    href="/bookings" 
-                    className="hover:underline 
-                               hover:text-clay-sand 
-                               transition-colors">
-                    Bookings
-                </a>
-            </li>
-            <li>
-                <a 
                     href="/studios" 
                     className="hover:underline 
                                hover:text-clay-sand 

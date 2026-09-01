@@ -93,11 +93,6 @@ export default function NavbarMobile() {
                         >About
                         </Link>
                         <Link 
-                            href="/bookings" 
-                            onClick={() => setNavbarOpen(false)}
-                        >Bookings
-                        </Link>
-                        <Link 
                             href="/studios" 
                             onClick={() => setNavbarOpen(false)}
                         >Studios
