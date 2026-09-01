@@ -20,8 +20,63 @@ export default function BookingForm({
     const [ error, setError ] = useState("");
     const [ success, setSuccess ] = useState(false);
 
+    const handleSubmit = async (
+        event: React.SubmitEvent<HTMLFormElement>
+    ) => {
+        event.preventDefault();
+
+        if (loading) return;
+
+        setLoading(true);
+        setError("");
+
+        try {
+            const response = await fetch("/api/bookings", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: name.trim(),
+                    email: email.trim(),
+                    guests: Number(guests),
+                    message: message.trim() || null,
+                    sessionId,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error("Booking failed.");
+            }
+
+            setSuccess(true); 
+        } catch {
+            setError(
+                "We couldn't complete your booking. Please try again."
+            );
+        } finally {
+            setLoading(false);
+        };
+    }
+
+    if (success) {
+        return (
+            <section className="rounded-2xl bg-white p-8 text-center shadow-sm ring-1 ring-stone-200">
+                <h3 className="text-2xl font-semibold text-stone-900">
+                    Booking received
+                </h3>
+                <p className="mt-3 text-stone-600">
+                    Your booking request has been submitted successfully.
+                </p>
+            </section>
+        )
+    }
+
     return (
-        <form className="space-y-6 rounded-2xl bg-white p-8 shadow-sm ring-1 ring-stone-200">
+        <form 
+            onSubmit={handleSubmit}
+            className="space-y-6 rounded-2xl bg-white p-8 shadow-sm ring-1 ring-stone-200"
+        >
             <div className="flex flex-col gap-2">
                 <label 
                     htmlFor="name"
@@ -93,11 +148,21 @@ export default function BookingForm({
                     className="resize-none rounded-lg border border-stone-300 px-4 py-2 focus:border-stone-500 focus:outline-none focus:ring-2 focus:ring-stone-200"
                 />
             </div>
+
+            {error && (
+                <p
+                    role="alert"
+                    className="text-sm text-rose-600"
+                >
+                    {error}
+                </p>
+            )}
             <button
                 type="submit"
+                disabled={loading}
                 className="w-full rounded-xl bg-stone-900 px-6 py-3 font-medium text-white transition hover:bg-stone-800 active:scale-[0.99]"
             >
-                Book Session
+                {loading ? "Booking..." : "Book Session"}
             </button>
         </form>
     )
