@@ -12,18 +12,60 @@ type Props = {
     studio: StudioWithSessions;
 };
 
-export default function StudioBookingClient({ studio }: Props) {
-    const [selectedSession, setSelectedSession] = useState < string | null > (null);
+export default function StudioBookingClient({ 
+    studio 
+}: Props) {
+    const [selectedSession, setSelectedSession] = useState<string | null>(null);
 
     return (
-        <div className="max-w-3xl mx-auto py-12">
-            <h1 className="text-3xl font-bold mb-6">
-                {studio.name}
-            </h1>
-            <h2 className="text-xl mb-4">
-                Available Sessions
-            </h2>
-            <div className="space-y-3 mb-8">
+        <div className="mx-auto w-full max-w-6xl px-6 py-12 sm:px-8 lg:py-16">
+            <header className="mb-10">
+                <h1 className="text-3xl font-semibold text-stone-900">
+                    {studio.name}
+                </h1>
+                <p className="mt-2 text-stone-600">
+                    Reserve your place at an upcoming pottery session.
+                </p>
+            </header>
+            <div className="grid gap-8 lg:grid-cols-2">
+
+                {/* section 1 - session selection */}
+                <section>
+                    <h2 className="text-xl font-semibold text-stone-900">
+                        Available sessions
+                    </h2>
+                    <p className="mt-2 text-sm text-stone-600">
+                        Choose a date to view the available times.
+                    </p>
+
+                    {/* Calendar + session options will go here */}
+                </section>
+
+                {/* section 2 - booking details */}
+                <section>
+                    {
+                        selectedSession ? (
+                            <BookingForm sessionId={selectedSession} />
+                        ) : (
+                            <div className="flex min-h-80 items-center justify-center rounded-2xl bg-white p-8 text-center shadow-sm ring-1 ring-stone-200">
+                                <div className="max-w-xs">
+                                    <h2 className="text-xl font-semibold text-stone-900">
+                                        Your booking
+                                    </h2>
+                                    <p>
+                                        Your booking details will appear here 
+                                        once you select a session.
+                                    </p>
+                                </div>
+                            </div>
+                        )
+                    }
+                </section>
+            </div>
+
+
+
+            {/* <div className="space-y-3 mb-8">
                 {studio.sessions.map((session) => (
                     <button
                         key={session.id}
@@ -41,7 +83,7 @@ export default function StudioBookingClient({ studio }: Props) {
 
             {selectedSession && (
                 <BookingForm sessionId={selectedSession} />
-            )}
+            )} */}
         </div>
     )
 };
