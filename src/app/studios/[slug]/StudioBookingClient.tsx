@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { Studio, Session } from "@prisma/client";
+import BookingCalendar from "@/components/bookingCalendar/BookingCalendar";
 import BookingForm from "@/components/bookingForm/BookingForm";
 
 type StudioWithSessions = Studio & {
@@ -15,7 +16,9 @@ type Props = {
 export default function StudioBookingClient({ 
     studio 
 }: Props) {
-    const [selectedSession, setSelectedSession] = useState<string | null>(null);
+
+    const [ selectedSession, setSelectedSession ] = useState<string | null>(null);
+    const [ selectedDate, setSelectedDate ] = useState<Date | null>(null);
 
     return (
         <div className="mx-auto w-full max-w-6xl px-6 py-12 sm:px-8 lg:py-16">
@@ -39,6 +42,11 @@ export default function StudioBookingClient({
                     </p>
 
                     {/* Calendar + session options will go here */}
+                    <BookingCalendar 
+                        sessions={studio.sessions}
+                        selectedDate={selectedDate}
+                        onSelectDate={setSelectedDate}
+                    />
                 </section>
 
                 {/* section 2 - booking details */}
