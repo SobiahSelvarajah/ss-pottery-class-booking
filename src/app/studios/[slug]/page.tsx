@@ -17,13 +17,24 @@ type PageProps = {
 export default async function StudioPage({ params }: PageProps) {
 
     const { slug } = await params;
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
     // fetch studio from db
     const studio = await prisma.studio.findUnique({
         where: { slug },
         // fetch its related sessions
         include: {
             sessions: {
-                orderBy: { date: "asc" },
+                where: {
+                    date: {
+                        gte: today,
+                    },
+                },
+                orderBy: {
+                    date: "asc",
+                },
             },
         },
     });
@@ -31,7 +42,6 @@ export default async function StudioPage({ params }: PageProps) {
     // if studio slug doesn't exist
     // return notFound page
     if (!studio) return notFound();
-
 
     // return studio booking client component here
     // returning client component

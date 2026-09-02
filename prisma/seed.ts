@@ -99,6 +99,7 @@ async function main() {
 
     // today
     const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
     // helper function to add days
     function addDays(date: Date, days: number) {
