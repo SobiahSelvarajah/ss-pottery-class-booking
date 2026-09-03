@@ -20,6 +20,13 @@ export default function StudioBookingClient({
     const [ selectedSession, setSelectedSession ] = useState<string | null>(null);
     const [ selectedDate, setSelectedDate ] = useState<Date | null>(null);
 
+    const selectedSessions = selectedDate
+        ? studio.sessions.filter(
+            (session) => 
+                new Date(session.date).toDateString() ===
+                selectedDate.toDateString()
+        ) : [];
+
     return (
         <div className="mx-auto w-full max-w-6xl px-6 py-12 sm:px-8 lg:py-16">
             <header className="mb-10">
@@ -47,6 +54,25 @@ export default function StudioBookingClient({
                         selectedDate={selectedDate}
                         onSelectDate={setSelectedDate}
                     />
+                    {selectedDate && (
+                        <div className="mt-6">
+                            <h3 className="mb-3 font-medium text-stone-900">
+                                Available times
+                            </h3>
+                            <div className="grid grid-cols-2 gap-3">
+                                {selectedSessions.map((session) => (
+                                    <button
+                                        key={session.id}
+                                        type="button"
+                                        onClick={() => setSelectedSession(session.id)}
+                                        className="rounded-full border border-stone-300 px-4 py-2 text-sm text-stone-900 transiition hover:bg-stone-200"
+                                    >
+                                        {session.timeSlot.charAt(0) + session.timeSlot.slice(1).toLowerCase()}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </section>
 
                 {/* section 2 - booking details */}
@@ -70,28 +96,6 @@ export default function StudioBookingClient({
                     }
                 </section>
             </div>
-
-
-
-            {/* <div className="space-y-3 mb-8">
-                {studio.sessions.map((session) => (
-                    <button
-                        key={session.id}
-                        onClick={() => setSelectedSession(session.id)}
-                        className={`block w-full border rounded-lg p-3 text-left ${
-                            selectedSession === session.id
-                                ? "border-clay-dark bg-clay-light"
-                                : "border-neutral-light"
-                        }`}
-                    >
-                        {new Date(session.date).toDateString()} - {session.timeSlot}
-                    </button>
-                ))}
-            </div>
-
-            {selectedSession && (
-                <BookingForm sessionId={selectedSession} />
-            )} */}
         </div>
     )
 };

@@ -115,7 +115,7 @@ export default function BookingCalendar({
                     onClick={() => changeMonth("previous")}
                     disabled={isFirstMonth}
                     aria-label="Previous month"
-                    className="flex h-9 w-9 items-center justify-center rounded-full text-stone-600 transition hover:bg-stone-200 hover:text-stone-900"
+                    className="flex h-9 w-9 items-center justify-center rounded-full text-stone-600 transition hover:bg-stone-200 hover:text-stone-900 disabled:cursor-default disabled:text-stone-300 disabled:hover:bg-transparent"
                 >
                     <ChevronLeft className="h-4 w-4"/>
                 </button>
@@ -130,7 +130,7 @@ export default function BookingCalendar({
                     onClick={() => changeMonth("next")}
                     disabled={isLastMonth}
                     aria-label="Next month"
-                    className="flex h-9 w-9 items-center justify-center rounded-full text-stone-600 transition hover:bg-stone-200 hover:text-stone-900"
+                    className="flex h-9 w-9 items-center justify-center rounded-full text-stone-600 transition hover:bg-stone-200 hover:text-stone-900 disabled:cursor-default disabled:text-stone-300 disabled:hover:bg-transparent"
                 >
                     <ChevronRight className="h-4 w-4"/>
                 </button>
