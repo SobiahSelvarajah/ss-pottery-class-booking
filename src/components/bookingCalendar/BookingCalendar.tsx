@@ -2,6 +2,8 @@
 
 import type { Session } from "@prisma/client";
 import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
 
 type BookingCalendarProps = {
     sessions: Session[];
@@ -65,17 +67,76 @@ export default function BookingCalendar({
         )
     );
 
+    // select between previous and upcoming months
+    const changeMonth = (direction: "previous" | "next") => {
+        setCurrentMonth((current) => {
+            const newMonth = new Date(current);
+
+            newMonth.setMonth(
+                current.getMonth() + (direction === "next" ? 1 : -1)
+            );
+
+            return newMonth;
+        });
+    };
+
+    // only display months with available dates
+    const lastSessionDate = sessions.length
+        ? new Date(sessions[sessions.length - 1].date)
+        : firstSessionDate
+    
+    const firstAvailableMonth = new Date(
+        firstSessionDate.getFullYear(),
+        firstSessionDate.getMonth(),
+        1
+    );
+
+    const lastAvailableMonth = new Date(
+        lastSessionDate.getFullYear(),
+        lastSessionDate.getMonth(),
+        1
+    );
+
+    const isFirstMonth = 
+        currentMonth.getFullYear() === firstAvailableMonth.getFullYear() &&
+        currentMonth.getMonth() === firstAvailableMonth.getMonth();
+
+    const isLastMonth = 
+        currentMonth.getFullYear() === lastAvailableMonth.getFullYear() &&
+        currentMonth.getMonth() === lastAvailableMonth.getMonth();
 
     return (
         <section className="mt-6">
-            <header className="mb-5 text-center">
+
+            {/* calendar arrows and month */}
+            <header className="mb-5 flex items-center justify-between">
+                <button
+                    type="button"
+                    onClick={() => changeMonth("previous")}
+                    disabled={isFirstMonth}
+                    aria-label="Previous month"
+                    className="flex h-9 w-9 items-center justify-center rounded-full text-stone-600 transition hover:bg-stone-200 hover:text-stone-900"
+                >
+                    <ChevronLeft className="h-4 w-4"/>
+                </button>
                 <h3 className="font-medium text-stone-900">
                     {currentMonth.toLocaleDateString("en-GB", {
                         month: "long",
                         year: "numeric",
                     })}
                 </h3>
+                <button
+                    type="button"
+                    onClick={() => changeMonth("next")}
+                    disabled={isLastMonth}
+                    aria-label="Next month"
+                    className="flex h-9 w-9 items-center justify-center rounded-full text-stone-600 transition hover:bg-stone-200 hover:text-stone-900"
+                >
+                    <ChevronRight className="h-4 w-4"/>
+                </button>
             </header>
+
+            {/* date grid */}
             <ol className="grid grid-cols-7 gap-2">
                 {[
                     "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
@@ -124,7 +185,7 @@ export default function BookingCalendar({
                                         selected
                                             ? "bg-stone-900 text-white"
                                             : available
-                                            ? "text-stone-900 hover:bg-stone-100"
+                                            ? "text-stone-900 hover:bg-stone-200"
                                             : "cursor-default text-stone-300"
                                     }
                                 `}
