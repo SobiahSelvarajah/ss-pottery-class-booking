@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
-import StudiosIntro from "@/components/studiosIntro/StudiosIntro";
-import StudiosClient from "@/components/studiosClient/StudiosClient";
+import StudiosIntro from "@/components/studio/StudiosIntro";
+import StudiosClient from "@/components/studio/StudiosClient";
 
 
 // Prisma runs on server component
@@ -13,10 +13,7 @@ export default async function StudiosPage() {
     const studios = await prisma.studio.findMany() 
 
     return (
-        <main className="max-w-7xl mx-auto px-5 
-                         sm:px-6 lg:px-20 py-15 
-                         bg-clay-light 
-                         text-neutral-dark">
+        <main className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-20 py-15 bg-clay-light text-neutral-dark">
             <StudiosIntro />
             <StudiosClient studios={studios} />
         </main>

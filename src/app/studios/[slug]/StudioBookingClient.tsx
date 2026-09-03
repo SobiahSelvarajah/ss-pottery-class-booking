@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import type { Studio, Session } from "@prisma/client";
-import BookingCalendar from "@/components/bookingCalendar/BookingCalendar";
-import BookingForm from "@/components/bookingForm/BookingForm";
+import BookingCalendar from "@/components/booking/BookingCalendar";
+import BookingForm from "@/components/booking/BookingForm";
 
 type StudioWithSessions = Studio & {
     sessions: Session[];

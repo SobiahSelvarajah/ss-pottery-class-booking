@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import type { SyntheticEvent } from "react";
-import ContactIntro from "@/components/contactIntro/ContactIntro";
-import ContactInfo from "@/components/contactInfo/ContactInfo";
+import ContactIntro from "@/components/contact/ContactIntro";
+import ContactInfo from "@/components/contact/ContactInfo";
 
 
 export default function ContactPage() {
@@ -61,9 +61,7 @@ export default function ContactPage() {
     };
 
     return (
-        <main className="min-h-screen bg-clay-light 
-                         text-neutral-dark 
-                         px-6 py-16">
+        <main className="min-h-screen bg-clay-light text-neutral-dark px-6 py-16">
             <div className="max-w-6xl mx-auto">
                 <ContactIntro />
 
@@ -82,7 +80,8 @@ export default function ContactPage() {
                             <div>
                                 <label 
                                     htmlFor="name" 
-                                    className="block text-sm font-medium mb-2">
+                                    className="block text-sm font-medium mb-2"
+                                >
                                     Full Name
                                 </label>
                                 <input 
@@ -93,17 +92,16 @@ export default function ContactPage() {
                                     value={contactFormData.name} 
                                     onChange={handleDataChange} 
                                     placeholder="Enter your name" 
-                                    className="w-full rounded-md border 
-                                               border-neutral-light px-4 
-                                               py-2 focus:outline-none focus:ring-2 
-                                               focus:ring-clay-brown transition" />
+                                    className="w-full rounded-md border border-neutral-light px-4 py-2 focus:outline-none focus:ring-2 focus:ring-clay-brown transition"
+                                />
                             </div>
 
                             {/* user email */}
                             <div>
                                 <label 
                                     htmlFor="email" 
-                                    className="block text-sm font-medium mb-2">
+                                    className="block text-sm font-medium mb-2"
+                                >
                                     Email Address
                                 </label>
                                 <input 
@@ -114,17 +112,16 @@ export default function ContactPage() {
                                     value={contactFormData.email}
                                     onChange={handleDataChange}
                                     placeholder="Enter your email"
-                                    className="w-full rounded-md border 
-                                               border-neutral-light px-4 
-                                               py-2 focus:outline-none focus:ring-2 
-                                               focus:ring-clay-brown transition" />
+                                    className="w-full rounded-md border border-neutral-light px-4 py-2 focus:outline-none focus:ring-2 focus:ring-clay-brown transition" 
+                                />
                             </div>
 
                             {/* user subject */}
                             <div>
                                 <label 
                                     htmlFor="subject" 
-                                    className="block text-sm font-medium mb-2">
+                                    className="block text-sm font-medium mb-2"
+                                >
                                     Subject
                                 </label>
                                 <input 
@@ -134,17 +131,16 @@ export default function ContactPage() {
                                     value={contactFormData.subject}
                                     onChange={handleDataChange}
                                     placeholder="Enter the subject"
-                                    className="w-full rounded-md border 
-                                               border-neutral-light px-4 
-                                               py-2 focus:outline-none focus:ring-2 
-                                               focus:ring-clay-brown transition" />
+                                    className="w-full rounded-md border border-neutral-light px-4 py-2 focus:outline-none focus:ring-2 focus:ring-clay-brown transition" 
+                                />
                             </div>
 
                             {/* user message */}
                             <div>
                                 <label 
                                     htmlFor="message" 
-                                    className="block text-sm font-medium mb-2">
+                                    className="block text-sm font-medium mb-2"
+                                >
                                     Message
                                 </label>
                                 <textarea 
@@ -155,18 +151,15 @@ export default function ContactPage() {
                                     value={contactFormData.message}
                                     onChange={handleDataChange}
                                     placeholder="Enter your message"
-                                    className="w-full rounded-md border 
-                                               border-neutral-light px-4 
-                                               py-2 focus:outline-none focus:ring-2 
-                                               focus:ring-clay-brown resize-none transition" />
+                                    className="w-full rounded-md border border-neutral-light px-4 py-2 focus:outline-none focus:ring-2 focus:ring-clay-brown resize-none transition" 
+                                />
                             </div>
 
                             {/* submit button */}
                             <button 
                                 type="submit" 
-                                className="w-full bg-clay-brown text-neutral-white 
-                                           py-3 rounded-md hover:bg-clay-dark 
-                                           transition-colors duration-300">
+                                className="w-full bg-clay-brown text-neutral-white py-3 rounded-md hover:bg-clay-dark transition-colors duration-300"
+                            >
                                 Send message
                             </button>
                             {status && <p className="text-center">{status}</p>}

@@ -1,5 +1,5 @@
-import FeaturedIntro from "../featuredIntro/FeaturedIntro";
-import FeaturedCards from "../featuredCards/FeaturedCards";
+import FeaturedIntro from "./FeaturedIntro";
+import FeaturedCards from "./FeaturedCards";
 
 
 export default function Featured() {

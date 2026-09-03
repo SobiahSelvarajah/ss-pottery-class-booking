@@ -1,4 +1,4 @@
-import OurStoryText from "../ourStoryText/OurStoryText";
+import OurStoryText from "./OurStoryText";
 
 
 export default function OurStory() {

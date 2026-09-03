@@ -1,7 +1,7 @@
-import AboutIntro from "@/components/aboutIntro/AboutIntro";
-import AboutStory from "@/components/aboutStory/AboutStory";
-import AboutPurpose from "@/components/aboutPurpose/AboutPurpose";
-import AboutStudio from "@/components/aboutStudio/AboutStudio";
+import AboutIntro from "@/components/about/AboutIntro";
+import AboutStory from "@/components/about/AboutStory";
+import AboutPurpose from "@/components/about/AboutPurpose";
+import AboutStudio from "@/components/about/AboutStudio";
 
 
 export default function AboutPage() {

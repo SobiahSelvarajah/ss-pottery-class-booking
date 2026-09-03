@@ -1,5 +1,6 @@
-import HeroIntro from "../heroIntro/HeroIntro";
-import HeroImages from "../heroImages/HeroImages";
+import HeroIntro from "./HeroIntro";
+import HeroImages from "./HeroImages";
+
 
 export default function Hero() {
     return(
