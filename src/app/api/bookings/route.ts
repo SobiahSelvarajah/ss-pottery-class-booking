@@ -41,6 +41,7 @@ export async function POST(request: Request) {
         typeof guests !== "number" ||
         !Number.isInteger(guests) ||
         guests < 1 ||
+        guests > 8 ||
         typeof sessionId !== "string" ||
         !sessionId.trim()
     ) {

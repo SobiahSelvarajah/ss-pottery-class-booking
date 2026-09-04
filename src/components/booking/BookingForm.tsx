@@ -45,14 +45,18 @@ export default function BookingForm({
                 }),
             });
 
+            const data = await response.json();
+
             if (!response.ok) {
-                throw new Error("Booking failed.");
+                throw new Error(data.error || "Booking failed.");
             }
 
             setSuccess(true); 
-        } catch {
+        } catch(error) {
             setError(
-                "We couldn't complete your booking. Please try again."
+                    error instanceof Error
+                        ? error.message
+                        : "We couldn't complete your booking. Please try again."
             );
         } finally {
             setLoading(false);
@@ -67,6 +71,9 @@ export default function BookingForm({
                 </h3>
                 <p className="mt-3 text-stone-600">
                     Your booking request has been submitted successfully.
+                </p>
+                <p className="mt-2 text-sm text-stone-500">
+                    We&apos;ll be in touch by email with the next steps.
                 </p>
             </section>
         )
@@ -123,6 +130,7 @@ export default function BookingForm({
                     name="guests"
                     type="number" 
                     min={1}
+                    max={8}
                     required
                     value={guests}
                     onChange={(event) => setGuests(event.target.value)}
@@ -160,7 +168,7 @@ export default function BookingForm({
             <button
                 type="submit"
                 disabled={loading}
-                className="w-full rounded-xl bg-stone-900 px-6 py-3 font-medium text-white transition hover:bg-stone-800 active:scale-[0.99]"
+                className="w-full rounded-xl bg-stone-900 px-6 py-3 font-medium text-white transition hover:bg-stone-800 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
             >
                 {loading ? "Booking..." : "Book Session"}
             </button>
