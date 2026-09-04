@@ -28,6 +28,15 @@ export default function StudioBookingClient({
                 selectedDate.toDateString()
         ) : [];
 
+    const chosenSession = studio.sessions.find(
+        (session) => session.id === selectedSession
+    );    
+
+    const handleSelectDate = (date: Date) => {
+        setSelectedDate(date);
+        setSelectedSession(null);
+    };
+
     return (
         <div className="mx-auto w-full max-w-6xl px-6 py-12 sm:px-8 lg:py-16">
             <header className="mb-10">
@@ -49,12 +58,14 @@ export default function StudioBookingClient({
                         Choose a date to view the available times.
                     </p>
 
-                    {/* Calendar + session options will go here */}
+                    {/* calendar */}
                     <BookingCalendar 
                         sessions={studio.sessions}
                         selectedDate={selectedDate}
-                        onSelectDate={setSelectedDate}
+                        onSelectDate={handleSelectDate}
                     />
+
+                    {/* available time slots */}
                     {selectedDate && (
                         <div className="mt-6">
                             <h3 className="mb-3 font-medium text-stone-900">
@@ -67,7 +78,7 @@ export default function StudioBookingClient({
                                         type="button"
                                         onClick={() => setSelectedSession(session.id)}
                                         className={`
-                                            rounded-full border px-4 py-2 text-sm transiition
+                                            rounded-full border px-4 py-2 text-sm transition
                                             ${
                                                 selectedSession === session.id
                                                     ? "border-stone-900 bg-stone-900 text-white"
@@ -87,7 +98,30 @@ export default function StudioBookingClient({
                 <section>
                     {
                         selectedSession ? (
-                            <BookingForm sessionId={selectedSession} />
+                            <div>
+                                <div className="mb-6">
+                                    <p className="text-sm text-stone-500">
+                                        Selected session
+                                    </p>
+                                    <p className="mt-1 font-medium text-stone-900">
+                                        {selectedDate?.toLocaleDateString("en-GB", {
+                                            weekday: "long",
+                                            day: "numeric",
+                                            month: "long",
+                                            year: "numeric",
+                                        })}
+                                    </p>
+
+                                    {chosenSession && (
+                                        <p>
+                                            {chosenSession.timeSlot.charAt(0) +
+                                                chosenSession.timeSlot.slice(1).toLowerCase()}
+                                        </p>
+                                    )}
+                                </div>
+
+                                <BookingForm sessionId={selectedSession} />
+                            </div>
                         ) : (
                             <div className="flex min-h-80 items-center justify-center rounded-2xl bg-white p-8 text-center shadow-sm ring-1 ring-stone-200">
                                 <div className="max-w-xs">
