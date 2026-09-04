@@ -7,6 +7,7 @@ type StudioCarouselProps = {
     alt: string
 };
 
+
 export default function StudioCarousel({images, alt}: StudioCarouselProps) {
 
     const [currentImgIndex, setCurrentImgIndex] = useState(0);

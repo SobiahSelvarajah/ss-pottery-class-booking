@@ -5,6 +5,7 @@ type StudioLocationFilterProps = {
     onChange: (locaion: string) => void;
 };
 
+
 export default function StudioLocationFilter({
     selectedLocation,
     onChange,
