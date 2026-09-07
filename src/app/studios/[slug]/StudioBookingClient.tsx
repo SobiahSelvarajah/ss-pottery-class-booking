@@ -5,12 +5,29 @@ import type { Studio, Session } from "@prisma/client";
 import BookingCalendar from "@/components/booking/BookingCalendar";
 import BookingForm from "@/components/booking/BookingForm";
 
+type SessionWithBookings = Session & {
+    bookings: {
+        guests: number;
+    }[];
+};
+
 type StudioWithSessions = Studio & {
-    sessions: Session[];
+    sessions: SessionWithBookings[];
 };
 
 type Props = {
     studio: StudioWithSessions;
+};
+
+const SESSION_CAPACITY = 10;
+
+const getRemainingSpaces = (session: SessionWithBookings) => {
+    const totalBookedGuests = session.bookings.reduce(
+        (total, booking) => total + booking.guests,
+        0
+    );
+
+    return Math.max(SESSION_CAPACITY - totalBookedGuests, 0);
 };
 
 
@@ -37,6 +54,12 @@ export default function StudioBookingClient({
         setSelectedSession(null);
     };
 
+    // calendar date is unavailable once all sessions are full
+    const availableSessions = studio.sessions.filter(
+        (session) => getRemainingSpaces(session) > 0
+    );
+
+
     return (
         <div className="mx-auto w-full max-w-6xl px-6 py-12 sm:px-8 lg:py-16">
             <header className="mb-10">
@@ -60,7 +83,7 @@ export default function StudioBookingClient({
 
                     {/* calendar */}
                     <BookingCalendar 
-                        sessions={studio.sessions}
+                        sessions={availableSessions}
                         selectedDate={selectedDate}
                         onSelectDate={handleSelectDate}
                     />
@@ -72,23 +95,42 @@ export default function StudioBookingClient({
                                 Available times
                             </h3>
                             <div className="grid grid-cols-2 gap-3">
-                                {selectedSessions.map((session) => (
-                                    <button
-                                        key={session.id}
-                                        type="button"
-                                        onClick={() => setSelectedSession(session.id)}
-                                        className={`
-                                            rounded-full border px-4 py-2 text-sm transition
-                                            ${
-                                                selectedSession === session.id
-                                                    ? "border-stone-900 bg-stone-900 text-white"
-                                                    : "border-stone-300 text-stone-900 hover:bg-stone-100"
-                                            }
-                                        `}
-                                    >
-                                        {session.timeSlot.charAt(0) + session.timeSlot.slice(1).toLowerCase()}
-                                    </button>
-                                ))}
+                                {selectedSessions.map((session) => {
+                                    const remainingSpaces = getRemainingSpaces(session);
+                                    const isFull = remainingSpaces === 0;
+
+                                    return (
+                                        <button
+                                            key={session.id}
+                                            type="button"
+                                            disabled={isFull}
+                                            onClick={() => setSelectedSession(session.id)}
+                                            className={`
+                                                rounded-xl border px-4 py-3 text-sm transition
+                                                ${
+                                                    isFull
+                                                        ? "cursor-not-allowed border-stone-200 text-stone-300"
+                                                        : selectedSession === session.id
+                                                        ? "border-stone-900 bg-stone-900 text-white"
+                                                        : "border-stone-300 text-stone-900 hover:bg-stone-100"
+                                                }
+                                            `}
+                                        >
+                                            <span className="block font-medium">
+                                                {session.timeSlot.charAt(0) +
+                                                    session.timeSlot.slice(1).toLowerCase()}
+                                            </span>
+                                            <span className="mt-1 block text-xs">
+                                                {isFull
+                                                    ? "Fully booked"
+                                                    : `${remainingSpaces} ${
+                                                        remainingSpaces === 1 ? "space" : "spaces"
+                                                    } remaining`
+                                                }
+                                            </span>
+                                        </button>
+                                    )
+                                })}
                             </div>
                         </div>
                     )}

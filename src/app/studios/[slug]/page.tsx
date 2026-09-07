@@ -35,6 +35,18 @@ export default async function StudioPage({ params }: PageProps) {
                 orderBy: {
                     date: "asc",
                 },
+                include: {
+                    bookings: {
+                        where: {
+                            status: {
+                                in: ["PENDING", "CONFIRMED"],
+                            },
+                        },
+                        select: {
+                            guests: true,
+                        },
+                    },
+                },
             },
         },
     });
