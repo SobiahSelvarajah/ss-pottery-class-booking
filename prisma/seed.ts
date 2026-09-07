@@ -111,8 +111,8 @@ async function main() {
     // for each studio in the array
     for (const studio of allStudios) {
 
-        // generate next 30 days
-        for (let i = 1; i <= 30; i++) {
+        // generate next 60 days
+        for (let i = 1; i <= 60; i++) {
 
             const date = addDays(today,i);
 

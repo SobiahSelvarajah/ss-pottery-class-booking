@@ -4,13 +4,11 @@ import type { Session } from "@prisma/client";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-
 type BookingCalendarProps = {
     sessions: Session[];
     selectedDate: Date | null;
     onSelectDate: (date: Date) => void;
 };
-
 
 export default function BookingCalendar({
     sessions,
@@ -24,14 +22,13 @@ export default function BookingCalendar({
         : new Date();
 
     // set calendar month state
-    const [ currentMonth, setCurrentMonth ] = 
-        useState(
-            new Date(
-                firstSessionDate.getFullYear(),
-                firstSessionDate.getMonth(),
-                1
-            )
-        );
+    const [currentMonth, setCurrentMonth] = useState(
+        new Date(
+            firstSessionDate.getFullYear(),
+            firstSessionDate.getMonth(),
+            1
+        )
+    );
 
     // information about the current calendar month
     const year = currentMonth.getFullYear();
@@ -67,24 +64,12 @@ export default function BookingCalendar({
         )
     );
 
-    // select between previous and upcoming months
-    const changeMonth = (direction: "previous" | "next") => {
-        setCurrentMonth((current) => {
-            const newMonth = new Date(current);
-
-            newMonth.setMonth(
-                current.getMonth() + (direction === "next" ? 1 : -1)
-            );
-
-            return newMonth;
-        });
-    };
-
-    // only display months with available dates
+    // work out last available session date
     const lastSessionDate = sessions.length
         ? new Date(sessions[sessions.length - 1].date)
-        : firstSessionDate
-    
+        : firstSessionDate;
+
+    // limit calendar navigation to months with available sessions
     const firstAvailableMonth = new Date(
         firstSessionDate.getFullYear(),
         firstSessionDate.getMonth(),
@@ -96,6 +81,19 @@ export default function BookingCalendar({
         lastSessionDate.getMonth(),
         1
     );
+
+    // navigate between calendar months
+    const changeMonth = (direction: "previous" | "next") => {
+        setCurrentMonth((current) => {
+            const newMonth = new Date(current);
+
+            newMonth.setMonth(
+                current.getMonth() + (direction === "next" ? 1 : -1)
+            );
+
+            return newMonth;
+        });
+    };
 
     const isFirstMonth = 
         currentMonth.getFullYear() === firstAvailableMonth.getFullYear() &&
@@ -117,7 +115,7 @@ export default function BookingCalendar({
                     aria-label="Previous month"
                     className="flex h-9 w-9 items-center justify-center rounded-full text-stone-600 transition hover:bg-stone-200 hover:text-stone-900 disabled:cursor-default disabled:text-stone-300 disabled:hover:bg-transparent"
                 >
-                    <ChevronLeft className="h-4 w-4"/>
+                    <ChevronLeft className="h-4 w-4" />
                 </button>
                 <h3 className="font-medium text-stone-900">
                     {currentMonth.toLocaleDateString("en-GB", {
@@ -132,7 +130,7 @@ export default function BookingCalendar({
                     aria-label="Next month"
                     className="flex h-9 w-9 items-center justify-center rounded-full text-stone-600 transition hover:bg-stone-200 hover:text-stone-900 disabled:cursor-default disabled:text-stone-300 disabled:hover:bg-transparent"
                 >
-                    <ChevronRight className="h-4 w-4"/>
+                    <ChevronRight className="h-4 w-4" />
                 </button>
             </header>
 
@@ -148,13 +146,13 @@ export default function BookingCalendar({
                         {day}
                     </li>
                 ))}
-                {Array.from({length: mondayBasedStart}).map((_, index) => (
+                {Array.from({ length: mondayBasedStart }).map((_, index) => (
                     <li
                         key={`empty-${index}`}
                         aria-hidden="true" 
                     />
                 ))}
-                {Array.from({length: daysInMonth}).map((_, index) => {
+                {Array.from({ length: daysInMonth }).map((_, index) => {
                     const day = index + 1;
 
                     const date = new Date(
@@ -197,5 +195,5 @@ export default function BookingCalendar({
                 })}
             </ol>
         </section>
-    )
+    );
 }
