@@ -70,12 +70,15 @@ export async function POST(request: Request) {
     const cleanMessage = message?.trim() || null;
 
     // validate email format
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailPattern = 
+        /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)+$/;
 
-    if (!emailPattern.test(cleanEmail)) {
-        // invalid email
+    if (
+        cleanEmail.length > 254 ||
+        !emailPattern.test(cleanEmail)
+    ) {
         return NextResponse.json(
-            { error: "Please enter a valid email address."},
+            { error: "Please enter a valid email address." },
             { status: 400 }
         );
     }
