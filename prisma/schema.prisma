@@ -59,7 +59,7 @@ model Booking {
   email         String
   guests        Int
   message       String?
-  status        BookingStatus   @default(PENDING)
+  status        BookingStatus   @default(CONFIRMED)
 
   session       Session         @relation(fields: [sessionId], references: [id])
   sessionId     String

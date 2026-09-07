@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import { sendBookingConfirmationEmail } from "@/lib/sendBookingConfirmationEmail";
 
 // created post api endpoint
 // runs when frontend sends post request to this route
@@ -89,6 +90,9 @@ export async function POST(request: Request) {
             where: {
                 id: sessionId,
             },
+            include: {
+                studio: true,
+            },
         });
 
         if (!session) {
@@ -160,6 +164,19 @@ export async function POST(request: Request) {
                 sessionId,
             },
         });
+
+        try {
+            await sendBookingConfirmationEmail({
+                email: cleanEmail,
+                name: cleanName,
+                studioName: session.studio.name,
+                date: session.date,
+                timeSlot: session.timeSlot,
+                guests,
+            });
+        } catch (error) {
+            console.error("Booking confirmation email failed:", error);
+        }
 
         // booking successfully created
         return NextResponse.json(
