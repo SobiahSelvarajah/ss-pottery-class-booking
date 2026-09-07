@@ -130,7 +130,7 @@ export default function BookingForm({
                     name="guests"
                     type="number" 
                     min={1}
-                    max={8}
+                    max={10}
                     required
                     value={guests}
                     onChange={(event) => setGuests(event.target.value)}

@@ -41,7 +41,7 @@ export async function POST(request: Request) {
         typeof guests !== "number" ||
         !Number.isInteger(guests) ||
         guests < 1 ||
-        guests > 8 ||
+        guests > 10 ||
         typeof sessionId !== "string" ||
         !sessionId.trim()
     ) {
@@ -107,6 +107,40 @@ export async function POST(request: Request) {
             // session is in the past
             return NextResponse.json(
                 { error: "This session is no longer available." },
+                { status: 409 }
+            );
+        }
+
+        const SESSION_CAPACITY = 10;
+
+        const existingBookings = await prisma.booking.aggregate({
+            where: {
+                sessionId,
+                status: {
+                    in: ["PENDING", "CONFIRMED"],
+                },
+            },
+            _sum: {
+                guests: true,
+            },
+        });
+
+        const bookedGuests = existingBookings._sum.guests ?? 0;
+
+        const remainingSpaces = SESSION_CAPACITY - bookedGuests;
+
+        if (guests > remainingSpaces) {
+            return NextResponse.json(
+                {
+                    error:
+                        remainingSpaces > 0
+                            ?`Only ${remainingSpaces} ${
+                                remainingSpaces === 1 
+                                    ? "space remains"
+                                    : "spaces remain"
+                            } for this session.`
+                            : "This session is fully booked.",
+                },
                 { status: 409 }
             );
         }
