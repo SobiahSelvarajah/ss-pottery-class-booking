@@ -4,11 +4,13 @@ import { useState } from "react";
 
 type BookingFormProps = {
     sessionId: string;
+    onBookingReset: () => void;
 };
 
 
 export default function BookingForm({
     sessionId,
+    onBookingReset,
 }: BookingFormProps) {
 
     const [ name, setName ] = useState("");
@@ -66,15 +68,29 @@ export default function BookingForm({
     if (success) {
         return (
             <section className="rounded-2xl bg-white p-8 text-center shadow-sm ring-1 ring-stone-200">
-                <h3 className="text-2xl font-semibold text-stone-900">
+                <h3 className="mt-5 text-2xl font-semibold text-stone-900">
                     Booking received
                 </h3>
-                <p className="mt-3 text-stone-600">
+                <p className="mt-12 text-stone-600">
                     Your booking request has been submitted successfully.
                 </p>
-                <p className="mt-2 text-sm text-stone-500">
+                <p className="mt-3 text-sm text-stone-500">
                     We&apos;ll be in touch by email with the next steps.
                 </p>
+                <div>
+                    <p className="mt-20 text-stone-700">
+                        Want to book another session?
+                        No problem! Just click here 
+                        to book more.
+                    </p>
+                    <button
+                        type="button"
+                        onClick={onBookingReset}
+                        className="mt-6 rounded-xl border border-stone-300 px-5 py-2 text-sm font-medium text-stone-900 transition hover:bg-stone-100"
+                    >
+                        Book another session
+                    </button>
+                </div>
             </section>
         )
     }

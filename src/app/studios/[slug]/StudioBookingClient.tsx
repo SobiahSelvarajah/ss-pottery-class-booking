@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import type { Studio, Session } from "@prisma/client";
 import BookingCalendar from "@/components/booking/BookingCalendar";
 import BookingForm from "@/components/booking/BookingForm";
@@ -35,6 +36,8 @@ export default function StudioBookingClient({
     studio 
 }: Props) {
 
+    const router = useRouter();
+
     const [ selectedSession, setSelectedSession ] = useState<string | null>(null);
     const [ selectedDate, setSelectedDate ] = useState<Date | null>(null);
 
@@ -52,6 +55,12 @@ export default function StudioBookingClient({
     const handleSelectDate = (date: Date) => {
         setSelectedDate(date);
         setSelectedSession(null);
+    };
+
+    const handleBookingReset = () => {
+        setSelectedDate(null);
+        setSelectedSession(null);
+        router.refresh();
     };
 
     // calendar date is unavailable once all sessions are full
@@ -162,7 +171,10 @@ export default function StudioBookingClient({
                                     )}
                                 </div>
 
-                                <BookingForm sessionId={selectedSession} />
+                                <BookingForm 
+                                    sessionId={selectedSession} 
+                                    onBookingReset={handleBookingReset}
+                                />
                             </div>
                         ) : (
                             <div className="flex min-h-80 items-center justify-center rounded-2xl bg-white p-8 text-center shadow-sm ring-1 ring-stone-200">
