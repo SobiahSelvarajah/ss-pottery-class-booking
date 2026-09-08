@@ -1,21 +1,32 @@
+import Link from "next/link";
+
 
 export default function FooterCompanyLinks() {
     return(
         <ul className="space-y-2 font-body text-neutral-light">
             <li>
-                <a href="#" className="hover:text-neutral-white transition">
+                <Link 
+                    href="/" 
+                    className="hover:text-neutral-white transition"
+                >
+                    Home
+                </Link>
+            </li>
+            <li>
+                <Link 
+                    href="/about" 
+                    className="hover:text-neutral-white transition"
+                >
                     About
-                </a>
+                </Link>
             </li>
             <li>
-                <a href="#" className="hover:text-neutral-white transition">
+                <Link 
+                    href="/contact" 
+                    className="hover:text-neutral-white transition"
+                >
                     Contact
-                </a>
-            </li>
-            <li>
-                <a href="#" className="hover:text-neutral-white transition">
-                    FAQs
-                </a>
+                </Link>
             </li>
         </ul>
     )
