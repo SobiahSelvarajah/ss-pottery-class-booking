@@ -128,6 +128,7 @@ export default function ContactPage() {
                                     type="text" 
                                     id="subject" 
                                     name="subject" 
+                                    required
                                     value={contactFormData.subject}
                                     onChange={handleDataChange}
                                     placeholder="Enter the subject"
@@ -168,5 +169,5 @@ export default function ContactPage() {
                 </section>
             </div>
         </main>
-    )
+    );
 }

@@ -8,7 +8,7 @@ interface ContactConfirmationProps {
 
 // reusable styling objects
 const bodyStyle = {
-    fontFamily: "Ariel, sans-serif",
+    fontFamily: "Arial, sans-serif",
     backgroundColor: "#F6F6F6"
 };
 const containerStyle = {

@@ -1,59 +1,46 @@
-import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { ContactSchema } from "@/lib/validators/contact";
 import { sendContactConfirmation } from "@/lib/email";
 
 
 export async function POST(request: Request) {
-
     try {
 
-        // check content type
-        // format of data
+        // ensure request body is JSON
         if (!request.headers.get("content-type")?.includes("application/json")) {
-            return new Response(
-                JSON.stringify({ error: "Content type is invalid"}),
+            return Response.json(
+                { error: "Content type is invalid"},
                 { status: 415 }
-            )
-        };
+            );
+        }
 
-
-        // Parse body
-        // takes json form frontend
-        // converts into js object
+        // parse and validate request body
         const body = await request.json();
-
-
-        // checks if incoming data matches schema
         const parsed = ContactSchema.safeParse(body);
-
 
         // if validation fails:
         //  -> return 400
         //  -> send error message
         //  -> do not hit db
         if (!parsed.success) {
-            return new Response(
-                JSON.stringify({ errors: z.treeifyError(parsed.error)}),
+            return Response.json(
+                { error: "Please check the form fields and try again." },
                 { status: 400 }
-            )
-        };
+            );
+        }
 
-
-        // if validation succeeds:
-        //  -> create new row in contact table 
+        // save contact message
         const contact = await prisma.contact.create({
-            data: parsed.data
+            data: parsed.data,
         });
 
-
-        // send confirmation email
+        // send confirmation email 
+        // without failing the submission
         try {
-            await sendContactConfirmation(contact.name, contact.email) 
-        } catch(emailError) {
-            console.error("Email send failure", emailError)
-        };
-
+            await sendContactConfirmation(contact.name, contact.email);
+        } catch (emailError) {
+            console.error("Email send failure", emailError);
+        }
 
         // return success response
         // http 201 for successful creation
@@ -62,17 +49,15 @@ export async function POST(request: Request) {
             { success: true, contact },
             { status: 201 }
         );
-
-
     // if something fails
     // log error in server console
-    } catch(error) {
-        console.error(error)
-        return new Response(
+    } catch (error) {
+        console.error("Contact submission failure", error);
+        return Response.json(
             // return 500
             // server error catch
-            JSON.stringify({ error: "Internal server error"}),
+            { error: "Internal server error"},
             { status: 500 }
-        )
-    };
-};
+        );
+    }
+}
