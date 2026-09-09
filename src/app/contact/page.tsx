@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import type { SyntheticEvent } from "react";
+import { useState } from "react";
+import type { ChangeEvent ,SyntheticEvent } from "react";
 import ContactIntro from "@/components/contact/ContactIntro";
 import ContactInfo from "@/components/contact/ContactInfo";
 
@@ -16,9 +16,10 @@ export default function ContactPage() {
     });
 
     const [status, setStatus] = useState<string | null>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     
     const handleDataChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+        e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
         setContactFormData({
             ...contactFormData,
@@ -29,7 +30,8 @@ export default function ContactPage() {
     const handleSubmit = async (e: SyntheticEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        setStatus("Sending information...");
+        setIsSubmitting(true);
+        setStatus(null);
 
         try {
             const response = await fetch("/api/contact", {
@@ -47,16 +49,18 @@ export default function ContactPage() {
                 return;
             }
 
-            setStatus("Message sent successfully!");
+            setStatus("Thanks! Your message has been received.");
 
             setContactFormData({
                 name: "",
                 email: "",
-                subject:"",
-                message:"",
+                subject: "",
+                message: "",
             });
-        } catch(error) {
+        } catch (error) {
             setStatus("Network error. Please try again later.")
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -159,11 +163,16 @@ export default function ContactPage() {
                             {/* submit button */}
                             <button 
                                 type="submit" 
-                                className="w-full bg-clay-brown text-neutral-white py-3 rounded-md hover:bg-clay-dark transition-colors duration-300"
+                                disabled={isSubmitting}
+                                className="w-full bg-clay-brown text-neutral-white py-3 rounded-md hover:bg-clay-dark transition-colors duration-300 disabled:cursor-not-allowed disabled:opacity-60"
                             >
-                                Send message
+                                {isSubmitting ? "Sending..." : "Send message"}
                             </button>
-                            {status && <p className="text-center">{status}</p>}
+                            {status && (
+                                <p className="text-center text-sm text-neutral-mid">
+                                    {status}
+                                </p>
+                            )}
                         </form>
                     </div>
                 </section>
