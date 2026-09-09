@@ -27,5 +27,5 @@ export default function NavbarLinks() {
                 </a>
             </li>
         </ul>
-    )
+    );
 }

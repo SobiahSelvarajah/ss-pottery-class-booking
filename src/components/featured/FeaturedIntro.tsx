@@ -10,5 +10,5 @@ export default function FeaturedIntro() {
                 skilled makers across local studios.
             </p>
         </header>
-    )
+    );
 }

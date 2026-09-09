@@ -6,5 +6,5 @@ export default function NavbarLogo() {
                 Kiln & Clay
             </a>
         </div>
-    )
+    );
 }

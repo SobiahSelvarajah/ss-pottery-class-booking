@@ -70,8 +70,8 @@ export default function NavbarMobile() {
             />
 
             {/* slide effect */}
-            <div
-                className={`fixed top-0 right-0 h-full w-64 
+            <div className={`
+                    fixed top-0 right-0 h-full w-64 
                     bg-clay-dark text-neutral-white 
                     shadow-xl transform transition-transform 
                     duration-300 ease-in-out z-50 
@@ -83,26 +83,30 @@ export default function NavbarMobile() {
                         <Link 
                             href="/" 
                             onClick={() => setNavbarOpen(false)}
-                        >Home
+                        >
+                            Home
                         </Link>
                         <Link 
                             href="/about" 
                             onClick={() => setNavbarOpen(false)}
-                        >About
+                        >
+                            About
                         </Link>
                         <Link 
                             href="/studios" 
                             onClick={() => setNavbarOpen(false)}
-                        >Studios
+                        >
+                            Studios
                         </Link>
                         <Link 
                             href="contact" 
                             onClick={() => setNavbarOpen(false)}
-                        >Contact
+                        >
+                            Contact
                         </Link>
                     </nav>
                 </div>
             </div>
         </div>
-    )
+    );
 }

@@ -14,5 +14,5 @@ export default function Navbar() {
                 <NavbarMobile />
             </nav>            
         </header>
-    )
+    );
 }

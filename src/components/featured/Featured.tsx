@@ -8,5 +8,5 @@ export default function Featured() {
             <FeaturedIntro />
             <FeaturedClasses />
         </section>
-    )
+    );
 }

@@ -54,5 +54,5 @@ export default function ContactConfirmation({
                 </Container>
             </Body>
         </Html>
-    )
-};
+    );
+}

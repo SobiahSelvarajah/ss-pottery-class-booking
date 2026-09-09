@@ -189,5 +189,5 @@ export default function BookingForm({
                 {loading ? "Booking..." : "Book Session"}
             </button>
         </form>
-    )
+    );
 }

@@ -14,6 +14,8 @@ export default function FeaturedClasses() {
                     duration={featuredClass.duration}
                     image={featuredClass.image}
                     alt={featuredClass.alt}
+                    details={featuredClass.details}
+                    includes={featuredClass.includes}
                 />
             ))}
         </div>
