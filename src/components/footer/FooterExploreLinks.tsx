@@ -7,7 +7,7 @@ export default function FooterExploreLinks() {
             <li>
                 <Link 
                     href="/studios" 
-                    className="hover:text-neutral-white transition"
+                    className="transition-colors duration-300 hover:text-neutral-white"
                 >
                     Studios
                 </Link>
@@ -15,10 +15,20 @@ export default function FooterExploreLinks() {
             <li>
                 <Link 
                     href="/studios" 
-                    className="hover:text-neutral-white transition"
+                    className="transition-colors duration-300 hover:text-neutral-white"
                 >
                     Book a session
                 </Link>
+            </li>
+            <li>
+                <a 
+                    href="https://github.com/SobiahSelvarajah/ss-pottery-class-booking"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors duration-300 hover:text-neutral-white"
+                >
+                    View Source Code
+                </a>
             </li>
         </ul>
     );
