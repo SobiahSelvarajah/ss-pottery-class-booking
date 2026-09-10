@@ -65,16 +65,18 @@ export default function ContactPage() {
     };
 
     return (
-        <main className="min-h-screen bg-clay-light text-neutral-dark px-6 py-16">
+        <main className="bg-clay-light text-neutral-dark px-6 py-16">
             <div className="max-w-6xl mx-auto">
                 <ContactIntro />
 
                 {/* contact content */}
                 <section className="grid grid-cols-1 lg:grid-cols-2 gap-14">
-                    <ContactInfo />
+                    <div className="lg:flex lg:items-center">
+                        <ContactInfo />
+                    </div>
 
                     {/* contact form */}
-                    <div className="bg-neutral-white border border-neutral-light rounded-2xl shadow-sm p-8">
+                    <div className="bg-neutral-white border border-neutral-light rounded-3xl shadow-sm p-8">
                         <h2 className="text-xl font-medium text-clay-dark mb-6">
                             Send Us a Message
                         </h2>

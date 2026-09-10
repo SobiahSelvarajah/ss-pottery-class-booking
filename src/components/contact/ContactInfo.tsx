@@ -6,20 +6,23 @@ export default function ContactInfo() {
                 <h2 className="text-xl font-medium text-clay-dark">
                     Contact Information
                 </h2>
-                <p className="mt-2 text-neutral-mid">
+                <p className="mt-2 max-w-md text-neutral-mid">
                     Reach out directly or visit one 
-                   of our studio locations.
+                    of our studio locations.
                 </p>
             </div>
-            <div className="space-y-4 text-sm">
+            <div className="space-y-5 text-sm">
                 <p>
-                    Email: hello@claystudios.com
-                </p>
-                <p> 
-                    Phone: +44 20 1234 5678
+                    <span className="font-medium">Email:</span>{" "}
+                    hello@kilnandclay.com
                 </p>
                 <p>
-                    Opening Hours: Monday - Saturday, 
+                    <span className="font-medium">Phone:</span>{" "}
+                    +44 20 1234 5678
+                </p>
+                <p>
+                    <span className="font-medium">Opening Hours:</span>{" "}
+                    Monday - Saturday, 
                     9am - 7pm
                 </p>
             </div>
