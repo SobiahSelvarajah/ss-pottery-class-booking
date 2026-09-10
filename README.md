@@ -10,7 +10,7 @@ The project focuses on building a complete booking experience with persistent da
 
 ## 🔗 Live Demo
 
-Coming soon.
+**[View Kiln & Clay Live](https://ss-pottery-class-booking.vercel.app/)**
 
 
 
@@ -241,7 +241,7 @@ Kiln & Clay is feature-complete for its current scope, with several possible ext
 
 ## 📌 Project Status 
 
-Kiln & Clay is feature-complete and ready for deployment.
+Kiln & Clay is feature-complete and deployed on Vercel.
 
 
 
